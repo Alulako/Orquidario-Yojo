@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Produto | Orquidário Yojo</title>
+    <meta
+        name="description"
+        content="Tela administrativa de cadastro e edição de produto do Orquidário Yojo."
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="produto-admin.css">
+</head>
+<body>
+    <header class="admin-header">
+        <div class="container admin-header-wrapper">
+            <a class="admin-brand" href="admin.html">
+                <span class="brand-mark">OY</span>
+                <span class="brand-text">
+                    <strong>Orquidário Yojo</strong>
+                    <small>Painel administrativo</small>
+                </span>
+            </a>
+
+            <nav class="admin-nav" aria-label="Navegação administrativa">
+                <a href="admin.html">Voltar ao painel</a>
+                <a href="login.html">Sair</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="admin-page">
+        <div class="container">
+            <section class="page-header">
+                <p class="section-tag">Gestão de catálogo</p>
+                <h1>Cadastrar produto</h1>
+                <p class="page-text">
+                    Preencha os dados do item para preparar o cadastro ou a futura edição no sistema do orquidário.
+                </p>
+            </section>
+
+            <div class="form-layout">
+                <section class="form-card" aria-labelledby="titulo-formulario">
+                    <div class="section-head">
+                        <h2 id="titulo-formulario">Informações do produto</h2>
+                        <p>Campos visuais prontos para integração futura com backend e persistência real.</p>
+                    </div>
+
+                    <form action="#" method="post" class="product-form">
+                        <div class="field-group field-span-2">
+                            <label for="nome-produto">Nome do produto</label>
+                            <input
+                                id="nome-produto"
+                                name="nome-produto"
+                                type="text"
+                                placeholder="Orquídea Phalaenopsis Branca"
+                            >
+                        </div>
+
+                        <div class="field-group">
+                            <label for="categoria">Categoria</label>
+                            <select id="categoria" name="categoria">
+                                <option>Orquídeas</option>
+                                <option>Adubos</option>
+                                <option>Vasos</option>
+                                <option>Acessórios</option>
+                            </select>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="preco">Preço</label>
+                            <input id="preco" name="preco" type="text" placeholder="R$ 89,90">
+                        </div>
+
+                        <div class="field-group">
+                            <label for="estoque">Quantidade em estoque</label>
+                            <input id="estoque" name="estoque" type="number" placeholder="14">
+                        </div>
+
+                        <div class="field-group">
+                            <label for="disponibilidade">Disponibilidade</label>
+                            <select id="disponibilidade" name="disponibilidade">
+                                <option>Disponível</option>
+                                <option>Estoque baixo</option>
+                                <option>Indisponível</option>
+                            </select>
+                        </div>
+
+                        <div class="field-group field-span-2">
+                            <label for="descricao-curta">Descrição curta</label>
+                            <textarea
+                                id="descricao-curta"
+                                name="descricao-curta"
+                                rows="3"
+                                placeholder="Resumo breve para cards, vitrines e listagens do catálogo."
+                            ></textarea>
+                        </div>
+
+                        <div class="field-group field-span-2">
+                            <label for="descricao-completa">Descrição completa</label>
+                            <textarea
+                                id="descricao-completa"
+                                name="descricao-completa"
+                                rows="6"
+                                placeholder="Texto detalhado com características, diferenciais e orientações do produto."
+                            ></textarea>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="destaque">Destaque na home</label>
+                            <select id="destaque" name="destaque">
+                                <option>Sim</option>
+                                <option>Não</option>
+                            </select>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="status">Status visual</label>
+                            <select id="status" name="status">
+                                <option>Ativo</option>
+                                <option>Rascunho</option>
+                                <option>Oculto</option>
+                            </select>
+                        </div>
+
+                        <div class="actions-row field-span-2">
+                            <button class="button button-primary" type="submit">Salvar produto</button>
+                            <a class="button button-secondary" href="admin.html">Cancelar</a>
+                        </div>
+                    </form>
+                </section>
+
+                <aside class="side-panel">
+                    <section class="upload-card" aria-labelledby="titulo-upload">
+                        <div class="section-head">
+                            <h2 id="titulo-upload">Imagem do produto</h2>
+                            <p>Área visual para futuro upload e gerenciamento da foto principal.</p>
+                        </div>
+
+                        <label class="upload-dropzone" for="imagem-produto">
+                            <input id="imagem-produto" name="imagem-produto" type="file">
+                            <span class="upload-icon">+</span>
+                            <strong>Enviar imagem do produto</strong>
+                            <small>Arraste um arquivo aqui ou clique para selecionar.</small>
+                        </label>
+                    </section>
+
+                    <section class="preview-card" aria-labelledby="titulo-preview">
+                        <div class="section-head">
+                            <h2 id="titulo-preview">Pré-visualização</h2>
+                            <p>Exemplo de como a imagem pode aparecer no catálogo.</p>
+                        </div>
+
+                        <div class="preview-frame">
+                            <img
+                                src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=900&q=80"
+                                alt="Pré-visualização de orquídea branca"
+                            >
+                            <div class="preview-meta">
+                                <span class="preview-badge">Orquídeas</span>
+                                <h3>Orquídea Phalaenopsis Branca</h3>
+                                <p>R$ 89,90</p>
+                            </div>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

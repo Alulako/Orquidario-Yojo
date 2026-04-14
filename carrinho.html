@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Carrinho | Orquidário Yojo</title>
+    <meta
+        name="description"
+        content="Carrinho de compras do Orquidário Yojo com resumo do pedido e itens selecionados."
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="carrinho.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-wrapper">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">OY</span>
+                <span class="brand-text">
+                    <strong>Orquidário Yojo</strong>
+                    <small>Flores e cultivo no CEAGESP</small>
+                </span>
+            </a>
+
+            <nav class="main-nav" aria-label="Menu principal">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="categoria.html">Categorias</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a class="is-active" href="carrinho.html">Carrinho</a></li>
+                    <li><a href="admin.html">Área do administrador</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="cart-section">
+            <div class="container">
+                <div class="cart-header">
+                    <p class="section-tag">Compra em andamento</p>
+                    <h1>Meu Carrinho</h1>
+                    <p class="cart-subtitle">
+                        Revise os itens selecionados, confira os valores e finalize o pedido de forma prática.
+                    </p>
+                </div>
+
+                <div class="cart-layout">
+                    <section class="cart-items" aria-labelledby="titulo-itens">
+                        <div class="items-card">
+                            <div class="items-header">
+                                <h2 id="titulo-itens">Produtos no carrinho</h2>
+                                <span>3 itens</span>
+                            </div>
+
+                            <article class="cart-item">
+                                <img
+                                    src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=700&q=80"
+                                    alt="Orquídea Phalaenopsis Branca em vaso"
+                                >
+                                <div class="item-info">
+                                    <h3>Orquídea Phalaenopsis Branca</h3>
+                                    <p class="item-meta">Preço unitário: R$ 89,90</p>
+                                    <p class="item-meta">Quantidade: 1</p>
+                                </div>
+                                <div class="item-pricing">
+                                    <p class="item-subtotal">Subtotal: R$ 89,90</p>
+                                    <a class="remove-link" href="carrinho.html">Remover</a>
+                                </div>
+                            </article>
+
+                            <article class="cart-item">
+                                <img
+                                    src="https://images.unsplash.com/photo-1463154545680-d59320fd685d?auto=format&fit=crop&w=700&q=80"
+                                    alt="Frasco de adubo líquido para floração"
+                                >
+                                <div class="item-info">
+                                    <h3>Adubo Líquido para Floração</h3>
+                                    <p class="item-meta">Preço unitário: R$ 24,90</p>
+                                    <p class="item-meta">Quantidade: 2</p>
+                                </div>
+                                <div class="item-pricing">
+                                    <p class="item-subtotal">Subtotal: R$ 49,80</p>
+                                    <a class="remove-link" href="carrinho.html">Remover</a>
+                                </div>
+                            </article>
+
+                            <article class="cart-item">
+                                <img
+                                    src="https://images.unsplash.com/photo-1487073240288-854ac7f1bb3c?auto=format&fit=crop&w=700&q=80"
+                                    alt="Vaso decorativo bege claro"
+                                >
+                                <div class="item-info">
+                                    <h3>Vaso Decorativo Bege Claro</h3>
+                                    <p class="item-meta">Preço unitário: R$ 36,90</p>
+                                    <p class="item-meta">Quantidade: 1</p>
+                                </div>
+                                <div class="item-pricing">
+                                    <p class="item-subtotal">Subtotal: R$ 36,90</p>
+                                    <a class="remove-link" href="carrinho.html">Remover</a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <a class="continue-link" href="catalogo.html">Continuar comprando</a>
+                    </section>
+
+                    <aside class="summary-card" aria-labelledby="titulo-resumo">
+                        <h2 id="titulo-resumo">Resumo do pedido</h2>
+
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <strong>R$ 176,60</strong>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Frete estimado</span>
+                            <strong>R$ 18,00</strong>
+                        </div>
+
+                        <div class="summary-row total-row">
+                            <span>Total</span>
+                            <strong>R$ 194,60</strong>
+                        </div>
+
+                        <a class="button button-primary" href="contato.html">Finalizar pedido</a>
+
+                        <p class="summary-note">
+                            Valores fictícios para apresentação visual. O pedido pode ser confirmado por contato direto.
+                        </p>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <h2>Orquidário Yojo</h2>
+                <p>
+                    Orquídeas, flores e produtos de cultivo com apresentação delicada e atendimento próximo.
+                </p>
+            </div>
+
+            <div>
+                <h3>Contato</h3>
+                <ul class="footer-list">
+                    <li><a href="tel:+5511999999999">(11) 99999-9999</a></li>
+                    <li><a href="mailto:contato@orquidarioyojo.com.br">contato@orquidarioyojo.com.br</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Localização</h3>
+                <p>CEAGESP - São Paulo, SP</p>
+                <p>Setor de flores e plantas ornamentais</p>
+            </div>
+
+            <div>
+                <h3>Horário</h3>
+                <p>Segunda a sábado</p>
+                <p>Das 7h às 16h</p>
+            </div>
+
+            <div>
+                <h3>Links rápidos</h3>
+                <ul class="footer-list">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="carrinho.html">Carrinho</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

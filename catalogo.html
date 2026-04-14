@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Produtos | Orquidário Yojo</title>
+    <meta
+        name="description"
+        content="Catálogo de produtos do Orquidário Yojo com orquídeas, adubos, vasos e acessórios para cultivo."
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="catalogo.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-wrapper">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">OY</span>
+                <span class="brand-text">
+                    <strong>Orquidário Yojo</strong>
+                    <small>Flores e cultivo no CEAGESP</small>
+                </span>
+            </a>
+
+            <nav class="main-nav" aria-label="Menu principal">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a class="is-active" href="catalogo.html">Catálogo</a></li>
+                    <li><a href="categorias.html">Categorias</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="carrinho.html">Carrinho</a></li>
+                    <li><a href="admin.html">Área do administrador</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="catalog-hero">
+            <div class="container">
+                <div class="catalog-hero-card">
+                    <p class="section-tag">Seleção do orquidário</p>
+                    <h1>Catálogo de Produtos</h1>
+                    <p class="catalog-subtitle">
+                        Encontre orquídeas, adubos, vasos e acessórios escolhidos para unir beleza,
+                        cuidado e praticidade no cultivo.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="catalog-controls">
+            <div class="container">
+                <div class="controls-panel">
+                    <form class="search-box" action="#" method="get">
+                        <label for="busca" class="sr-only">Buscar produtos</label>
+                        <input
+                            id="busca"
+                            name="busca"
+                            type="text"
+                            placeholder="Buscar por orquídeas, vasos ou acessórios"
+                        >
+                        <button type="submit">Buscar</button>
+                    </form>
+
+                    <div class="filters-group" aria-label="Filtros visuais por categoria">
+                        <span class="filters-label">Categorias</span>
+                        <a class="filter-chip is-selected" href="catalogo.html">Todos</a>
+                        <a class="filter-chip" href="categorias.html">Orquídeas</a>
+                        <a class="filter-chip" href="categorias.html">Adubos</a>
+                        <a class="filter-chip" href="categorias.html">Vasos</a>
+                        <a class="filter-chip" href="categorias.html">Acessórios</a>
+                    </div>
+
+                    <div class="sort-box">
+                        <label for="ordenacao">Ordenar por</label>
+                        <select id="ordenacao" name="ordenacao">
+                            <option>Mais procurados</option>
+                            <option>Menor preço</option>
+                            <option>Maior preço</option>
+                            <option>Novidades</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="catalog-grid-section section-spacing">
+            <div class="container">
+                <div class="results-summary">
+                    <p>Mostrando 12 produtos em destaque para o cultivo e a decoração.</p>
+                </div>
+
+                <div class="product-grid">
+                    <article class="product-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=900&q=80"
+                            alt="Orquídea phalaenopsis branca em vaso"
+                        >
+                        <div class="product-content">
+                            <div class="product-topline">
+                                <span class="category-label">Orquídeas</span>
+                                <span class="availability in-stock">Disponível</span>
+                            </div>
+                            <h2>Orquídea Phalaenopsis Branca</h2>
+                            <p class="price">R$ 89,90</p>
+                            <p class="product-description">
+                                Flor delicada e sofisticada, ideal para presentear ou compor ambientes elegantes.
+                            </p>
+                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=900&q=80"
+                            alt="Orquídea lilás com flores abertas"
+                        >
+                        <div class="product-content">
+                            <div class="product-topline">
+                                <span class="category-label">Orquídeas</span>
+                                <span class="availability in-stock">Disponível</span>
+                            </div>
+                            <h2>Orquídea Dendrobium Lilás</h2>
+                            <p class="price">R$ 74,50</p>
+                            <p class="product-description">
+                                Opção charmosa com coloração suave para colecionadores e decoração natural.
+                            </p>
+                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1463154545680-d59320fd685d?auto=format&fit=crop&w=900&q=80"
+                            alt="Frasco de adubo líquido para plantas"
+                        >
+                        <div class="product-content">
+                            <div class="product-topline">
+                                <span class="category-label">Adubos</span>
+                                <span class="availability in-stock">Disponível</span>
+                            </div>
+                            <h2>Adubo Líquido para Floração</h2>
+                            <p class="price">R$ 24,90</p>
+                            <p class="product-description">
+                                Fórmula prática para manutenção frequente e estímulo de florações vigorosas.
+                            </p>
+                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1487073240288-854ac7f1bb3c?auto=format&fit=crop&w=900&q=80"
+                            alt="Vaso decorativo bege para plantas"
+                        >
+                        <div class="product-content">
+                            <div class="product-topline">
+                                <span class="category-label">Vasos</span>
+                                <span class="availability in-stock">Disponível</span>
+                            </div>
+                            <h2>Vaso Decorativo Bege Claro</h2>
+                            <p class="price">R$ 36,90</p>
+                            <p class="product-description">
+                                Modelo versátil com acabamento leve para valorizar arranjos e plantas ornamentais.
+                            </p>
+                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=900&q=80"
+                            alt="Kit de cultivo com acessórios essenciais"
+                        >
+                        <div class="product-content">
+                            <div class="product-topline">
+                                <span class="category-label">Acessórios</span>
+                                <span class="availability low-stock">Últimas unidades</span>
+                            </div>
+                            <h2>Kit Básico de Cultivo</h2>
+                            <p class="price">R$ 58,00</p>
+                            <p class="product-description">
+                                Conjunto com itens úteis para rotina de manutenção e cuidado diário das plantas.
+                            </p>
+                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1466781783364-36c955e42a7f?auto=format&fit=crop&w=900&q=80"
+                            alt="Orquídea rosa em destaque"
+                        >
+                        <div class="product-content">
+                            <div class="product-topline">
+                                <span class="category-label">Orquídeas</span>
+                                <span class="availability in-stock">Disponível</span>
+                            </div>
+                            <h2>Orquídea Oncidium Rosa</h2>
+                            <p class="price">R$ 67,90</p>
+                            <p class="product-description">
+                                Perfil delicado e floral para quem busca leveza e presença visual no ambiente.
+                            </p>
+                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=900&q=80"
+                            alt="Arranjo com flores claras e verdes"
+                        >
+                        <div class="product-content">
+                            <div class="product-topline">
+                                <span class="category-label">Orquídeas</span>
+                                <span class="availability low-stock">Últimas unidades</span>
+                            </div>
+                            <h2>Mini Orquídea para Presente</h2>
+                            <p class="price">R$ 49,90</p>
+                            <p class="product-description">
+                                Formato compacto com apresentação delicada, ideal para lembranças especiais.
+                            </p>
+                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80"
+                            alt="Substrato e materiais para cultivo"
+                        >
+                        <div class="product-content">
+                            <div class="product-topline">
+                                <span class="category-label">Acessórios</span>
+                                <span class="availability in-stock">Disponível</span>
+                            </div>
+                            <h2>Substrato Especial para Orquídeas</h2>
+                            <p class="price">R$ 18,50</p>
+                            <p class="product-description">
+                                Mistura pensada para favorecer drenagem, aeração e adaptação no replantio.
+                            </p>
+                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=80"
+                            alt="Orquídea amarela em flor"
+                        >
+                        <div class="product-content">
+                            <div class="product-topline">
+                                <span class="category-label">Orquídeas</span>
+                                <span class="availability in-stock">Disponível</span>
+                            </div>
+                            <h2>Orquídea Amarela Premium</h2>
+                            <p class="price">R$ 94,00</p>
+                            <p class="product-description">
+                                Variedade marcante com flores luminosas para compor ambientes com destaque.
+                            </p>
+                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?auto=format&fit=crop&w=900&q=80"
+                            alt="Vaso cerâmico claro com acabamento artesanal"
+                        >
+                        <div class="product-content">
+                            <div class="product-topline">
+                                <span class="category-label">Vasos</span>
+                                <span class="availability in-stock">Disponível</span>
+                            </div>
+                            <h2>Vaso Cerâmico Texturizado</h2>
+                            <p class="price">R$ 42,00</p>
+                            <p class="product-description">
+                                Peça com aparência refinada para complementar projetos florais com suavidade.
+                            </p>
+                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=900&q=80"
+                            alt="Borrifador para plantas"
+                        >
+                        <div class="product-content">
+                            <div class="product-topline">
+                                <span class="category-label">Acessórios</span>
+                                <span class="availability in-stock">Disponível</span>
+                            </div>
+                            <h2>Borrifador de Névoa Fina</h2>
+                            <p class="price">R$ 27,90</p>
+                            <p class="product-description">
+                                Acessório prático para manutenção delicada da umidade em plantas ornamentais.
+                            </p>
+                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?auto=format&fit=crop&w=900&q=80"
+                            alt="Adubo granulado e materiais de cultivo"
+                        >
+                        <div class="product-content">
+                            <div class="product-topline">
+                                <span class="category-label">Adubos</span>
+                                <span class="availability sold-out">Reposição em breve</span>
+                            </div>
+                            <h2>Adubo Granulado de Manutenção</h2>
+                            <p class="price">R$ 31,90</p>
+                            <p class="product-description">
+                                Indicado para rotinas periódicas de cuidado com foco em nutrição equilibrada.
+                            </p>
+                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                        </div>
+                    </article>
+                </div>
+
+                <nav class="pagination" aria-label="Paginação do catálogo">
+                    <a class="page-link page-arrow" href="catalogo.html">Anterior</a>
+                    <a class="page-link is-current" href="catalogo.html">1</a>
+                    <a class="page-link" href="catalogo.html">2</a>
+                    <a class="page-link" href="catalogo.html">3</a>
+                    <a class="page-link page-arrow" href="catalogo.html">Próxima</a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <h2>Orquidário Yojo</h2>
+                <p>
+                    Orquídeas, flores e produtos de cultivo com apresentação delicada e atendimento próximo.
+                </p>
+            </div>
+
+            <div>
+                <h3>Contato</h3>
+                <ul class="footer-list">
+                    <li><a href="tel:+5511999999999">(11) 99999-9999</a></li>
+                    <li><a href="mailto:contato@orquidarioyojo.com.br">contato@orquidarioyojo.com.br</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Localização</h3>
+                <p>CEAGESP - São Paulo, SP</p>
+                <p>Setor de flores e plantas ornamentais</p>
+            </div>
+
+            <div>
+                <h3>Horário</h3>
+                <p>Segunda a sábado</p>
+                <p>Das 7h às 16h</p>
+            </div>
+
+            <div>
+                <h3>Links rápidos</h3>
+                <ul class="footer-list">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="categorias.html">Categorias</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
