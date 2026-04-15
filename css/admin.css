@@ -90,18 +90,20 @@ table {
     gap: 14px;
 }
 
-.brand-mark {
-    align-items: center;
-    background: linear-gradient(145deg, var(--color-primary), var(--color-secondary));
-    border-radius: 18px;
-    color: var(--color-white);
-    display: inline-flex;
-    font-size: 1rem;
-    font-weight: 700;
-    height: 54px;
-    justify-content: center;
-    letter-spacing: 0.08em;
-    width: 54px;
+/* Styles for the Logo in the Header */
+.logo-img {
+    height: 65px; /* Fixed height to prevent excessive zoom */
+    width: auto; /* Maintains correct aspect ratio */
+    display: block;
+    object-fit: contain; /* Ensures the logo is not cropped */
+    margin-right: 12px; /* Space between the logo and adjacent text */
+}
+
+/* Alignment of the brand */
+.brand {
+    display: flex;
+    align-items: center; /* Vertically centers the logo with the text */
+    text-decoration: none;
 }
 
 .brand-text {
