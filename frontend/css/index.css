@@ -1,0 +1,509 @@
+:root {
+    --color-primary: #2f4f3e;
+    --color-secondary: #6b8e5e;
+    --color-accent: #c8b6d8;
+    --color-surface: #f5f1e8;
+    --color-white: #ffffff;
+    --color-text: #4a4a4a;
+    --color-muted: #eae7e1;
+    --shadow-soft: 0 18px 45px rgba(47, 79, 62, 0.12);
+    --shadow-card: 0 12px 28px rgba(47, 79, 62, 0.08);
+    --radius-large: 28px;
+    --radius-medium: 20px;
+    --radius-small: 14px;
+    --container-width: 1180px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: linear-gradient(180deg, #f8f5ee 0%, #f5f1e8 38%, #ffffff 100%);
+    color: var(--color-text);
+    font-family: "Poppins", Arial, sans-serif;
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: var(--container-width);
+    padding: 0 24px;
+}
+
+.section-spacing {
+    padding: 88px 0;
+}
+
+.section-tag {
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.section-heading {
+    margin-bottom: 32px;
+    max-width: 700px;
+}
+
+.section-heading h2,
+.about-card h2 {
+    color: var(--color-primary);
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.site-header {
+    background: rgba(245, 241, 232, 0.9);
+    border-bottom: 1px solid rgba(47, 79, 62, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(14px);
+}
+
+.header-wrapper {
+    align-items: center;
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+    min-height: 88px;
+}
+
+.brand {
+    align-items: center;
+    display: inline-flex;
+    gap: 14px;
+}
+/* Styles for the Logo in the Header */
+.logo-img {
+    height: 65px; /* Fixed height to prevent excessive zoom */
+    width: auto; /* Maintains correct aspect ratio */
+    display: block;
+    object-fit: contain; /* Ensures the logo is not cropped */
+    margin-right: 12px; /* Space between the logo and adjacent text */
+}
+
+/* Alignment of the brand */
+.brand {
+    display: flex;
+    align-items: center; /* Vertically centers the logo with the text */
+    text-decoration: none;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-text strong {
+    color: var(--color-primary);
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.brand-text small {
+    color: var(--color-text);
+    font-size: 0.86rem;
+}
+
+.main-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.main-nav a {
+    border-radius: 999px;
+    color: var(--color-primary);
+    font-size: 0.96rem;
+    font-weight: 500;
+    padding: 10px 16px;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.main-nav a:hover,
+.main-nav a:focus-visible {
+    background-color: rgba(107, 142, 94, 0.12);
+    color: var(--color-secondary);
+    outline: none;
+}
+
+.hero {
+    overflow: hidden;
+    padding: 52px 0 80px;
+}
+
+.hero-grid {
+    align-items: center;
+    display: grid;
+    gap: 38px;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+}
+
+.hero-content h1 {
+    color: var(--color-primary);
+    font-size: clamp(2.6rem, 5vw, 4.6rem);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1.08;
+    max-width: 12ch;
+}
+
+.hero-text {
+    font-size: 1.04rem;
+    margin: 24px 0 30px;
+    max-width: 58ch;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.button {
+    border-radius: 999px;
+    display: inline-flex;
+    font-size: 0.98rem;
+    font-weight: 600;
+    justify-content: center;
+    padding: 14px 24px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.button:hover,
+.button:focus-visible {
+    box-shadow: var(--shadow-card);
+    outline: none;
+    transform: translateY(-2px);
+}
+
+.button-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.button-primary:hover,
+.button-primary:focus-visible {
+    background-color: #264434;
+}
+
+.button-secondary {
+    background-color: rgba(200, 182, 216, 0.28);
+    color: var(--color-primary);
+}
+
+.button-secondary:hover,
+.button-secondary:focus-visible {
+    background-color: rgba(200, 182, 216, 0.45);
+}
+
+.button-outline {
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    padding: 12px 20px;
+}
+
+.hero-visual {
+    position: relative;
+}
+
+.hero-visual img {
+    border-radius: 40px;
+    box-shadow: var(--shadow-soft);
+    min-height: 520px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.hero-visual::before {
+    background: radial-gradient(circle, rgba(200, 182, 216, 0.45) 0%, rgba(200, 182, 216, 0) 68%);
+    content: "";
+    height: 280px;
+    position: absolute;
+    right: -40px;
+    top: -30px;
+    width: 280px;
+    z-index: -1;
+}
+
+.hero-note {
+    background-color: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(47, 79, 62, 0.08);
+    border-radius: var(--radius-medium);
+    bottom: 24px;
+    box-shadow: var(--shadow-card);
+    max-width: 280px;
+    padding: 18px 20px;
+    position: absolute;
+    right: 24px;
+}
+
+.hero-note strong {
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.about-grid {
+    align-items: stretch;
+    display: grid;
+    gap: 28px;
+    grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+}
+
+.about-card,
+.about-highlight,
+.info-card,
+.benefit-card,
+.product-card {
+    background-color: var(--color-white);
+    border: 1px solid rgba(47, 79, 62, 0.08);
+    box-shadow: var(--shadow-card);
+}
+
+.about-card {
+    border-radius: var(--radius-large);
+    padding: 38px;
+}
+
+.about-card p + p {
+    margin-top: 16px;
+}
+
+.about-highlight {
+    background: linear-gradient(180deg, rgba(200, 182, 216, 0.3) 0%, rgba(245, 241, 232, 0.85) 100%);
+    border-radius: var(--radius-large);
+    display: grid;
+    gap: 16px;
+    padding: 28px;
+}
+
+.highlight-item {
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: var(--radius-medium);
+    padding: 18px;
+}
+
+.highlight-number {
+    color: var(--color-primary);
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.card-grid {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.card-grid-four {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.info-card,
+.benefit-card {
+    border-radius: var(--radius-medium);
+    padding: 26px;
+}
+
+.info-card h3,
+.benefit-card h3,
+.product-content h3,
+.site-footer h2,
+.site-footer h3 {
+    color: var(--color-primary);
+    margin-bottom: 12px;
+}
+
+.info-card a {
+    color: var(--color-secondary);
+    display: inline-flex;
+    font-weight: 600;
+    margin-top: 18px;
+}
+
+.products {
+    background-color: rgba(234, 231, 225, 0.45);
+}
+
+.product-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.product-card {
+    border-radius: 26px;
+    overflow: hidden;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover; /* Enquadra a foto preenchendo o espaço sem distorcer */
+    object-position: center; /* Mantém o foco no meio da imagem */
+}
+
+.product-content {
+    padding: 22px;
+}
+
+.price {
+    color: var(--color-secondary);
+    font-size: 1.12rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.benefits {
+    padding-bottom: 96px;
+}
+
+.site-footer {
+    background-color: var(--color-primary);
+    color: rgba(255, 255, 255, 0.88);
+    padding: 56px 0;
+}
+
+.footer-grid {
+    display: grid;
+    gap: 28px;
+    grid-template-columns: 1.2fr 1fr 1fr 0.8fr 1fr;
+}
+
+.site-footer h2,
+.site-footer h3,
+.site-footer a {
+    color: var(--color-white);
+}
+
+.site-footer p,
+.footer-list li + li {
+    margin-top: 8px;
+}
+
+.footer-list a:hover,
+.footer-list a:focus-visible {
+    color: #dce9d9;
+    outline: none;
+}
+
+@media (max-width: 1080px) {
+    .hero-grid,
+    .about-grid,
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-grid,
+    .card-grid-four,
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero-visual img {
+        min-height: 420px;
+    }
+}
+
+@media (max-width: 760px) {
+    .section-spacing {
+        padding: 68px 0;
+    }
+
+    .header-wrapper {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px 24px;
+    }
+
+    .container {
+        padding: 0 18px;
+    }
+
+    .main-nav ul {
+        justify-content: flex-start;
+    }
+
+    .hero {
+        padding: 32px 0 56px;
+    }
+
+    .hero-content h1 {
+        max-width: 100%;
+    }
+
+    .hero-note {
+        left: 18px;
+        max-width: none;
+        right: 18px;
+    }
+
+    .about-card,
+    .about-highlight,
+    .info-card,
+    .benefit-card,
+    .product-content {
+        padding: 22px;
+    }
+
+    .card-grid,
+    .card-grid-four,
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand {
+        align-items: flex-start;
+    }
+
+    .brand-mark {
+        height: 48px;
+        width: 48px;
+    }
+
+    .main-nav a,
+    .button {
+        width: 100%;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .hero-visual img {
+        min-height: 340px;
+    }
+}

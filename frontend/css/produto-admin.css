@@ -1,0 +1,405 @@
+:root {
+    --color-primary: #2f4f3e;
+    --color-secondary: #6b8e5e;
+    --color-accent: #c8b6d8;
+    --color-surface: #f5f1e8;
+    --color-white: #ffffff;
+    --color-text: #4a4a4a;
+    --color-muted: #eae7e1;
+    --shadow-soft: 0 20px 48px rgba(26, 43, 34, 0.12);
+    --shadow-card: 0 12px 28px rgba(47, 79, 62, 0.08);
+    --container-width: 1240px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background:
+        radial-gradient(circle at top left, rgba(200, 182, 216, 0.16), transparent 22%),
+        linear-gradient(180deg, #f4efe5 0%, #f5f1e8 34%, #f8f7f3 100%);
+    color: var(--color-text);
+    font-family: "Poppins", Arial, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: var(--container-width);
+    padding: 0 24px;
+}
+
+.section-tag {
+    color: var(--color-secondary);
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.admin-header {
+    background: rgba(255, 255, 255, 0.82);
+    border-bottom: 1px solid rgba(47, 79, 62, 0.08);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.admin-header-wrapper {
+    align-items: center;
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+    min-height: 86px;
+}
+
+.admin-brand {
+    align-items: center;
+    display: inline-flex;
+    gap: 14px;
+}
+
+/* Styles for the Logo in the Header */
+.logo-img {
+    height: 65px; /* Fixed height to prevent excessive zoom */
+    width: auto; /* Maintains correct aspect ratio */
+    display: block;
+    object-fit: contain; /* Ensures the logo is not cropped */
+    margin-right: 12px; /* Space between the logo and adjacent text */
+}
+
+/* Alignment of the brand */
+.brand {
+    display: flex;
+    align-items: center; /* Vertically centers the logo with the text */
+    text-decoration: none;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-text strong {
+    color: var(--color-primary);
+    font-size: 1.12rem;
+    font-weight: 600;
+}
+
+.brand-text small {
+    color: var(--color-text);
+    font-size: 0.86rem;
+}
+
+.admin-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.admin-nav a {
+    border-radius: 999px;
+    color: var(--color-primary);
+    font-size: 0.94rem;
+    font-weight: 500;
+    padding: 10px 16px;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.admin-nav a:hover,
+.admin-nav a:focus-visible {
+    background-color: rgba(107, 142, 94, 0.12);
+    color: var(--color-secondary);
+    outline: none;
+}
+
+.admin-page {
+    padding: 40px 0 88px;
+}
+
+.page-header {
+    margin-bottom: 28px;
+    max-width: 760px;
+}
+
+.page-header h1 {
+    color: var(--color-primary);
+    font-size: clamp(2.4rem, 4vw, 4rem);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1.08;
+    margin-bottom: 12px;
+}
+
+.page-text {
+    max-width: 58ch;
+}
+
+.form-layout {
+    display: grid;
+    gap: 28px;
+    grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+}
+
+.form-card,
+.upload-card,
+.preview-card {
+    background-color: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(47, 79, 62, 0.08);
+    box-shadow: var(--shadow-card);
+}
+
+.form-card,
+.upload-card,
+.preview-card {
+    border-radius: 28px;
+    padding: 28px;
+}
+
+.section-head {
+    margin-bottom: 20px;
+}
+
+.section-head h2 {
+    color: var(--color-primary);
+    font-size: 1.35rem;
+    margin-bottom: 6px;
+}
+
+.section-head p {
+    color: var(--color-secondary);
+    font-size: 0.95rem;
+}
+
+.product-form {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.field-span-2 {
+    grid-column: span 2;
+}
+
+.field-group label {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.field-group input,
+.field-group select,
+.field-group textarea {
+    background-color: rgba(245, 241, 232, 0.72);
+    border: 1px solid rgba(47, 79, 62, 0.08);
+    border-radius: 18px;
+    color: var(--color-text);
+    padding: 14px 16px;
+    resize: vertical;
+}
+
+.field-group input:focus,
+.field-group select:focus,
+.field-group textarea:focus {
+    border-color: rgba(107, 142, 94, 0.35);
+    outline: none;
+}
+
+.actions-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 6px;
+}
+
+.button {
+    border: 0;
+    border-radius: 999px;
+    display: inline-flex;
+    font-size: 0.96rem;
+    font-weight: 600;
+    justify-content: center;
+    padding: 14px 22px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.button:hover,
+.button:focus-visible {
+    box-shadow: var(--shadow-card);
+    outline: none;
+    transform: translateY(-2px);
+}
+
+.button-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.button-primary:hover,
+.button-primary:focus-visible {
+    background-color: #264434;
+}
+
+.button-secondary {
+    background-color: rgba(200, 182, 216, 0.26);
+    color: var(--color-primary);
+}
+
+.button-secondary:hover,
+.button-secondary:focus-visible {
+    background-color: rgba(200, 182, 216, 0.4);
+}
+
+.side-panel {
+    display: grid;
+    gap: 24px;
+    align-content: start;
+}
+
+.upload-dropzone {
+    align-items: center;
+    background:
+        linear-gradient(180deg, rgba(245, 241, 232, 0.76), rgba(255, 255, 255, 0.9));
+    border: 2px dashed rgba(107, 142, 94, 0.35);
+    border-radius: 24px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 240px;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.upload-dropzone:hover,
+.upload-dropzone:focus-within {
+    background: linear-gradient(180deg, rgba(200, 182, 216, 0.16), rgba(255, 255, 255, 0.94));
+    transform: translateY(-2px);
+}
+
+.upload-dropzone input {
+    display: none;
+}
+
+.upload-icon {
+    align-items: center;
+    background-color: var(--color-primary);
+    border-radius: 999px;
+    color: var(--color-white);
+    display: inline-flex;
+    font-size: 1.5rem;
+    font-weight: 600;
+    height: 54px;
+    justify-content: center;
+    width: 54px;
+}
+
+.upload-dropzone strong {
+    color: var(--color-primary);
+    font-size: 1.05rem;
+}
+
+.preview-frame {
+    background-color: rgba(245, 241, 232, 0.64);
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.preview-frame img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover; /* Enquadra a foto preenchendo o espaço sem distorcer */
+    object-position: center; /* Mantém o foco no meio da imagem */
+}
+
+.preview-meta {
+    padding: 20px;
+}
+
+.preview-badge {
+    background-color: rgba(200, 182, 216, 0.25);
+    border-radius: 999px;
+    color: var(--color-primary);
+    display: inline-flex;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    padding: 7px 12px;
+}
+
+.preview-meta h3 {
+    color: var(--color-primary);
+    font-size: 1.16rem;
+    margin-bottom: 8px;
+}
+
+.preview-meta p {
+    color: var(--color-secondary);
+    font-weight: 700;
+}
+
+@media (max-width: 1100px) {
+    .form-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 760px) {
+    .container {
+        padding: 0 18px;
+    }
+
+    .admin-header-wrapper {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .product-form {
+        grid-template-columns: 1fr;
+    }
+
+    .field-span-2 {
+        grid-column: auto;
+    }
+
+    .actions-row {
+        flex-direction: column;
+    }
+
+    .button,
+    .admin-nav a {
+        width: 100%;
+    }
+
+    .form-card,
+    .upload-card,
+    .preview-card {
+        border-radius: 22px;
+        padding: 22px;
+    }
+}

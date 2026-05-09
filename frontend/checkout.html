@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalização do Pedido | Orquidário Yojo</title>
+    <meta
+        name="description"
+        content="Página de finalização de pedido do Orquidário Yojo com formulário visual, opções de entrega e resumo da compra."
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-wrapper">
+            <a class="brand" href="index.html">
+                <img src="assets/logo.png" alt="Logo Orquidário Yojo" class="logo-img">
+                <span class="brand-text">
+                    <strong>Orquidário Yojo</strong>
+                    <small>Flores e cultivo no CEAGESP</small>
+                </span>
+            </a>
+
+            <nav class="main-nav" aria-label="Menu principal">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="categoria.html">Categorias</a></li>
+                    <li><a href="carrinho.html">Carrinho</a></li>
+                    <li><a href="contato.html">Fale Conosco</a></li>
+                    <!-- <li><a href="admin.html">Área do administrador</a></li> -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="checkout-section">
+            <div class="container">
+                <div class="checkout-header">
+                    <p class="section-tag">Etapa final da compra</p>
+                    <h1>Finalização do pedido</h1>
+                    <p class="checkout-subtitle">
+                        Preencha seus dados, escolha a forma de entrega e confirme a compra com praticidade.
+                    </p>
+                </div>
+
+                <div class="checkout-layout">
+                    <section class="checkout-form-card" aria-labelledby="titulo-dados">
+                        <form action="#" method="post">
+                            <div class="form-section">
+                                <div class="section-head">
+                                    <h2 id="titulo-dados">Dados para atendimento</h2>
+                                    <p>Informações fictícias para composição visual da tela.</p>
+                                </div>
+
+                                <div class="form-grid">
+                                    <div class="field-group field-span-2">
+                                        <label for="nome">Nome completo</label>
+                                        <input id="nome" name="nome" type="text" placeholder="Nelson Massayuki Yojo">
+                                    </div>
+
+                                    <div class="field-group">
+                                        <label for="telefone">Telefone</label>
+                                        <input id="telefone" name="telefone" type="tel" placeholder="11 99872-6880">
+                                    </div>
+
+                                    <div class="field-group">
+                                        <label for="email">E-mail</label>
+                                        <input id="email" name="email" type="email" placeholder="cliente@exemplo.com">
+                                    </div>
+
+                                    <div class="field-group field-span-2">
+                                        <label for="endereco">Endereço</label>
+                                        <input id="endereco" name="endereco" type="text" placeholder="Rua das Flores, 120">
+                                    </div>
+
+                                    <div class="field-group">
+                                        <label for="cidade">Cidade</label>
+                                        <input id="cidade" name="cidade" type="text" placeholder="São Paulo">
+                                    </div>
+
+                                    <div class="field-group">
+                                        <label for="cep">CEP</label>
+                                        <input id="cep" name="cep" type="text" placeholder="00000-000">
+                                    </div>
+
+                                    <div class="field-group field-span-2">
+                                        <label for="observacoes">Observações</label>
+                                        <textarea id="observacoes"
+                                                  name="observacoes"
+                                                  rows="5"
+                                                  placeholder="Informações adicionais sobre entrega, horários ou preferências."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <div class="section-head">
+                                    <h2>Entrega</h2>
+                                    <p>Escolha visual da modalidade desejada.</p>
+                                </div>
+
+                                <div class="option-grid">
+                                    <label class="option-card is-selected">
+                                        <input type="radio" name="entrega" checked>
+                                        <span class="option-title">Retirada no local</span>
+                                        <small>Combinar retirada diretamente no CEAGESP.</small>
+                                    </label>
+
+                                    <label class="option-card">
+                                        <input type="radio" name="entrega">
+                                        <span class="option-title">Entrega a combinar</span>
+                                        <small>Alinhamento prévio com atendimento do orquidário.</small>
+                                    </label>
+
+                                    <label class="option-card">
+                                        <input type="radio" name="entrega">
+                                        <span class="option-title">Entrega na região</span>
+                                        <small>Disponibilidade sujeita à área de atendimento.</small>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <div class="section-head">
+                                    <h2>Pagamento</h2>
+                                    <p>Selecione a forma de pagamento apenas visualmente.</p>
+                                </div>
+
+                                <div class="option-grid">
+                                    <label class="option-card is-selected">
+                                        <input type="radio" name="pagamento" checked>
+                                        <span class="option-title">Pix</span>
+                                        <small>Prático para confirmação rápida do pedido.</small>
+                                    </label>
+
+                                    <label class="option-card">
+                                        <input type="radio" name="pagamento">
+                                        <span class="option-title">Cartão</span>
+                                        <small>Pagamento combinado no atendimento.</small>
+                                    </label>
+
+                                    <label class="option-card">
+                                        <input type="radio" name="pagamento">
+                                        <span class="option-title">Pagamento na retirada</span>
+                                        <small>Ideal para pedidos retirados no local.</small>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <a href="https://wa.me/5511998726880?text=Olá,%20Orquidário%20Yojo!%20Vim%20pelo%20site%20e%20gostaria%20de%20fazer%20um%20pedido." class="button button-primary" target="_blank">Confirmar pedido</a>
+                            <p class="checkout-note">
+                                O atendimento alinhado pelo WhatsApp para combinar detalhes finais.
+                            </p>
+                        </form>
+                    </section>
+
+                    <aside class="summary-card" aria-labelledby="titulo-resumo">
+                        <h2 id="titulo-resumo">Resumo do pedido</h2>
+
+                        <div class="summary-items">
+                            <article class="summary-item">
+                                <div>
+                                    <h3>Orquídea Phalaenopsis Branca</h3>
+                                    <p>1 unidade</p>
+                                </div>
+                                <strong>R$ 89,90</strong>
+                            </article>
+
+                            <article class="summary-item">
+                                <div>
+                                    <h3>Adubo Líquido para Floração</h3>
+                                    <p>2 unidades</p>
+                                </div>
+                                <strong>R$ 49,80</strong>
+                            </article>
+
+                            <article class="summary-item">
+                                <div>
+                                    <h3>Vaso Decorativo Bege Claro</h3>
+                                    <p>1 unidade</p>
+                                </div>
+                                <strong>R$ 36,90</strong>
+                            </article>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <strong>R$ 176,60</strong>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Frete</span>
+                            <strong>R$ 18,00</strong>
+                        </div>
+
+                        <div class="summary-row total-row">
+                            <span>Total</span>
+                            <strong>R$ 194,60</strong>
+                        </div>
+
+                        <a class="whatsapp-link" href="contato.html">Atendimento e ajustes pelo WhatsApp</a>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <h2>Orquidário Yojo</h2>
+                <p>
+                    Orquídeas, flores e produtos de cultivo com apresentação delicada e atendimento próximo.
+                </p>
+            </div>
+
+            <div>
+                <h3>Contato</h3>
+                <ul class="footer-list">
+                    <li><a href="tel:+5511 99872-6880">11 99872-6880</a></li>
+                    <li><a href="mailto:contato@orquidarioyojo.com.br">contato@orquidarioyojo.com.br</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Localização</h3>
+                <p>CEAGESP - São Paulo, SP</p>
+                <p>Setor de flores e plantas ornamentais</p>
+            </div>
+
+            <div>
+                <h3>Horário</h3>
+                <p>Segunda a sábado</p>
+                <p>Das 7h às 16h</p>
+            </div>
+
+            <div>
+                <h3>Links rápidos</h3>
+                <ul class="footer-list">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
