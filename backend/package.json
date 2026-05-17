@@ -7,7 +7,10 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "seed:admin": "node src/seeders/02-seed-admin-user.js"
+    "seed:admin": "node src/seeders/02-seed-admin-user.js",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "db:reset": "docker compose down -v && docker compose up -d"
   },
   "keywords": [],
   "author": "",
