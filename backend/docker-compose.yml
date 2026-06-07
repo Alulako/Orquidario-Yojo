@@ -4,7 +4,7 @@ services:
     container_name: orquidario_yojo_postgres
     restart: unless-stopped
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
       POSTGRES_DB: orquidario_yojo
       POSTGRES_USER: postgres
@@ -16,6 +16,21 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+
+  backend:
+    build: .
+    container_name: orquidario_yojo_backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - ../frontend:/home/node/app/frontend
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/orquidario_yojo
+    depends_on:
+      postgres:
+        condition: service_healthy
 
 volumes:
   pgdata:

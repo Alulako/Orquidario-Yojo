@@ -84,19 +84,14 @@
                 <div class="subfilters-panel">
                     <div class="subfilter-group">
                         <span class="subfilters-label">Tipo</span>
-                        <a class="subfilter-chip is-selected" href="categoria.html">Todas</a>
-                        <a class="subfilter-chip" href="categoria.html">Phalaenopsis</a>
-                        <a class="subfilter-chip" href="categoria.html">Dendrobium</a>
-                        <a class="subfilter-chip" href="categoria.html">Oncidium</a>
-                        <a class="subfilter-chip" href="categoria.html">Mini orquídeas</a>
-                    </div>
-
-                    <div class="subfilter-group">
-                        <span class="subfilters-label">Perfil</span>
-                        <a class="subfilter-chip" href="categoria.html">Para presente</a>
-                        <a class="subfilter-chip" href="categoria.html">Para interiores</a>
-                        <a class="subfilter-chip" href="categoria.html">Colecionáveis</a>
-                        <a class="subfilter-chip" href="categoria.html">Mais floridas</a>
+                        <button class="subfilter-chip is-selected" data-filter="todas">Todas</button>
+                        <button class="subfilter-chip" data-filter="Phalaenopsis">Phalaenopsis</button>
+                        <button class="subfilter-chip" data-filter="Dendrobium">Dendrobium</button>
+                        <button class="subfilter-chip" data-filter="Oncidium">Oncidium</button>
+                        <button class="subfilter-chip" data-filter="Premium">Premium</button>
+                        <button class="subfilter-chip" data-filter="Interior">Interior</button>
+                        <button class="subfilter-chip" data-filter="Colecao">Coleção</button>
+                        <button class="subfilter-chip" data-filter="Ornamental">Ornamental</button>
                     </div>
                 </div>
             </div>
@@ -105,12 +100,12 @@
         <section class="products-section section-spacing">
             <div class="container">
                 <div class="products-topbar">
-                    <p>8 itens fictícios em destaque na categoria Orquídeas.</p>
+                    <p id="products-count">8 orquídeas em destaque</p>
                     <a class="back-link" href="catalogo.html">Voltar ao catálogo completo</a>
                 </div>
 
-                <div class="product-grid">
-                    <article class="product-card">
+                <div class="product-grid" id="product-grid">
+                    <article class="product-card" data-tipo="Phalaenopsis">
                         <img src="assets/Branca.png"
                              alt="Orquídea phalaenopsis branca em vaso">
                         <div class="product-content">
@@ -120,11 +115,11 @@
                             <p class="product-description">
                                 Opção clássica com aparência sofisticada para ambientes elegantes e presentes delicados.
                             </p>
-                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                            <a class="button button-outline" href="produto.html?id=branca">Ver detalhes</a>
                         </div>
                     </article>
 
-                    <article class="product-card">
+                    <article class="product-card" data-tipo="Dendrobium">
                         <img src="assets/Roxa.png"
                              alt="Orquídea lilás com flores abertas">
                         <div class="product-content">
@@ -134,11 +129,11 @@
                             <p class="product-description">
                                 Variedade com tom suave e aspecto leve para quem busca charme e composição floral.
                             </p>
-                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                            <a class="button button-outline" href="produto.html?id=roxa">Ver detalhes</a>
                         </div>
                     </article>
 
-                    <article class="product-card">
+                    <article class="product-card" data-tipo="Oncidium">
                         <img src="assets/rosa.png"
                              alt="Orquídea rosa em destaque">
                         <div class="product-content">
@@ -148,11 +143,11 @@
                             <p class="product-description">
                                 Silhueta delicada com visual romântico para compor arranjos e ambientes acolhedores.
                             </p>
-                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                            <a class="button button-outline" href="produto.html?id=rosa">Ver detalhes</a>
                         </div>
                     </article>
 
-                    <article class="product-card">
+                    <article class="product-card" data-tipo="Premium">
                         <img src="assets/amarelo.png"
                              alt="Orquídea amarela com flores abertas">
                         <div class="product-content">
@@ -162,25 +157,25 @@
                             <p class="product-description">
                                 Flor marcante com presença luminosa para clientes que buscam destaque e elegância.
                             </p>
-                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                            <a class="button button-outline" href="produto.html?id=amarelo">Ver detalhes</a>
                         </div>
                     </article>
 
-                    <article class="product-card">
+                    <article class="product-card" data-tipo="Ornamental">
                         <img src="assets/Premium.png"
-                             alt="Orquídea Premium">
+                             alt="Orquídea Premium Ornamental">
                         <div class="product-content">
-                            <span class="product-type">Orquídea Premium Ornamental</span>
+                            <span class="product-type">Ornamental</span>
                             <h2>Orquídea Premium Ornamental</h2>
                             <p class="price">R$ 49,90</p>
                             <p class="product-description">
                                 Versão compacta e charmosa para lembranças especiais e decoração ilustre.
                             </p>
-                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                            <a class="button button-outline" href="produto.html?id=premium">Ver detalhes</a>
                         </div>
                     </article>
 
-                    <article class="product-card">
+                    <article class="product-card" data-tipo="Interior">
                         <img src="assets/verdebranca.png"
                              alt="Orquídea branca com folhagem verde">
                         <div class="product-content">
@@ -190,11 +185,11 @@
                             <p class="product-description">
                                 Escolha versátil para salas, recepções e espaços com proposta leve e refinada.
                             </p>
-                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                            <a class="button button-outline" href="produto.html?id=interna">Ver detalhes</a>
                         </div>
                     </article>
 
-                    <article class="product-card">
+                    <article class="product-card" data-tipo="Colecao">
                         <img src="assets/Azul.png"
                              alt="Orquídea Azul">
                         <div class="product-content">
@@ -202,29 +197,58 @@
                             <h2>Orquídea Azul Especial para Colecionadores</h2>
                             <p class="price">R$ 118,00</p>
                             <p class="product-description">
-                                Modelo fictício pensado para destacar exclusividade e valor ornamental da categoria.
+                                Modelo exclusivo pensado para destacar exclusividade e valor ornamental da categoria.
                             </p>
-                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                            <a class="button button-outline" href="produto.html?id=azul">Ver detalhes</a>
                         </div>
                     </article>
 
-                    <article class="product-card">
+                    <article class="product-card" data-tipo="FloracaoIntensa">
                         <img src="assets/OlhodeBoneca.png"
                              alt="Orquídea olho de boneca suave em composição moderna">
                         <div class="product-content">
                             <span class="product-type">Floração intensa</span>
-                            <h2>Orquídea olho de boneca suave em composição moderna</h2>
+                            <h2>Orquídea Olho de Boneca</h2>
                             <p class="price">R$ 79,90</p>
                             <p class="product-description">
                                 Sugestão para quem quer cor suave, longa duração visual e cuidado prático no dia a dia.
                             </p>
-                            <a class="button button-outline" href="produto.html">Ver detalhes</a>
+                            <a class="button button-outline" href="produto.html?id=olhodeboneca">Ver detalhes</a>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
     </main>
+
+    <script>
+        // Filtro por tipo de orquídea
+        const chips = document.querySelectorAll('.subfilter-chip');
+        const cards = document.querySelectorAll('#product-grid .product-card');
+        const countEl = document.getElementById('products-count');
+
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                // Atualiza chip ativo
+                chips.forEach(c => c.classList.remove('is-selected'));
+                chip.classList.add('is-selected');
+
+                const filtro = chip.dataset.filter;
+                let visiveis = 0;
+
+                cards.forEach(card => {
+                    const tipo = card.dataset.tipo;
+                    const mostrar = filtro === 'todas' || tipo === filtro;
+                    card.style.display = mostrar ? '' : 'none';
+                    if (mostrar) visiveis++;
+                });
+
+                countEl.textContent = visiveis === 8
+                    ? '8 orquídeas em destaque'
+                    : `${visiveis} orquídea${visiveis !== 1 ? 's' : ''} encontrada${visiveis !== 1 ? 's' : ''}`;
+            });
+        });
+    </script>
 
     <footer class="site-footer">
         <div class="container footer-grid">

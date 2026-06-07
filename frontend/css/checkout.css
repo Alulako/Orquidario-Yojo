@@ -233,7 +233,7 @@ ul {
     border-radius: 18px;
     color: var(--color-text);
     padding: 14px 16px;
-    resize: vertical;
+    resize: none;
 }
 
 .field-group input:focus,
@@ -480,4 +480,37 @@ ul {
         display: inline-flex;
         width: 100%;
     }
+}
+
+/* Estilos adicionais */
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(47, 79, 62, 0.08);
+}
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+}
+.qty-btn:hover {
+  background: #f0f0f0;
+}
+.troco-field {
+  display: none;
+  margin-top: 12px;
+}
+.troco-field.visible {
+  display: block;
 }

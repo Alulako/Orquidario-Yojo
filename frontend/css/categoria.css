@@ -273,8 +273,14 @@ ul {
     border: 1px solid rgba(47, 79, 62, 0.08);
     border-radius: 999px;
     color: var(--color-primary);
+    cursor: pointer;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 0.96rem;
+    font-weight: 500;
     padding: 10px 16px;
     transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
 .subfilter-chip:hover,
