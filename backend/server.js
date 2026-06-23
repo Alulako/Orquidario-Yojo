@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import path from "path";
 dotenv.config();
 
 import express from "express";
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/uploads", express.static(join(__dirname, "uploads")));
+app.use(express.static(path.join(__dirname, 'frontend')));
 
 app.use("/api", routes);
 
@@ -28,11 +30,9 @@ app.use(errorHandler);
 async function start() {
   try {
     await sequelize.authenticate();
-    console.log("Conexao com PostgreSQL estabelecida.");
-
+    console.log("Conexão com PostgreSQL estabelecida.");
     await sequelize.sync();
     console.log("Tabelas sincronizadas.");
-
     app.listen(PORT, () => {
       console.log(`Servidor rodando em http://localhost:${PORT}`);
     });

@@ -190,13 +190,84 @@ Authorization: Bearer <token>
    ```
 6. Deve retornar os dados do admin sem a senha
 
-## Criterios de pronto (Pessoa A)
 
-- [ ] `docker compose up -d` sobe o PostgreSQL sem instalar PG localmente
-- [ ] `npm run dev` sobe o servidor sem erros
-- [ ] Sequelize conecta no PostgreSQL do Docker
-- [ ] `sequelize.sync()` cria a tabela Users
-- [ ] Seeder cria o admin `admin@orquidarioyojo.com.br`
-- [ ] POST /api/auth/login retorna JWT com credenciais corretas
-- [ ] GET /api/auth/me funciona com Authorization: Bearer <token>
-- [ ] Nenhum arquivo da pasta frontend/ foi modificado
+## Integração Frontend-Backend (Carrinho, Frete e WhatsApp)
+
+Esta seção descreve como o frontend interage com o backend para gerenciar o cálculo de frete, finalização de pedidos e geração da mensagem para o WhatsApp.
+
+### 1. Fluxo Geral da Aplicação
+
+```mermaid
+graph TD
+    A[Usuário navega pela vitrine] --> B[Adiciona produtos ao Carrinho no localStorage]
+    B --> C[Acessa página do Carrinho / Finalizar]
+    C --> D[Insere CEP e solicita cálculo de frete]
+    D -->|POST /api/carrinho/frete| E[Backend valida CEP e retorna valor]
+    E --> F[Atualiza o total do pedido com frete]
+    F --> G[Preenche os dados do Cliente e seleciona pagamento/entrega]
+    G --> H[Clica em Finalizar Pedido]
+    H -->|POST /api/carrinho/finalizar| I[Backend valida dados e retorna URL do WhatsApp com mensagem formatada]
+    I --> J[Frontend abre link do WhatsApp no navegador]
+```
+
+### 2. Endpoints e Páginas Correspondentes
+
+| Página HTML | Evento / Ação | Endpoint | Método | Descrição |
+|---|---|---|---|---|
+| `carrinho.html` / `checkout.html` | Digitar CEP + clicar em "Calcular Frete" | `/api/carrinho/frete` | `POST` | Valida o CEP (8 dígitos) e retorna o frete calculado e formatado. |
+| `carrinho.html` / `checkout.html` | Clicar em "Finalizar Pedido" | `/api/carrinho/finalizar` | `POST` | Recebe dados do cliente, itens e frete, valida e gera a URL e texto final do WhatsApp. |
+
+---
+
+### 3. Detalhes de Integração e Exemplos de `fetch()`
+
+A URL base da API em desenvolvimento é `http://localhost:3000`.
+
+#### A. Cálculo de Frete (`POST /api/carrinho/frete`)
+
+**Request Body (JSON):**
+```json
+{
+  "cep": "01310100"
+}
+```
+
+**Resposta de Sucesso (200 OK):**
+```json
+{
+  "frete": 15.00,
+  "freteFormatado": "R$ 15,00"
+}
+```
+
+**Exemplo de Implementação com `fetch()`:**
+```javascript
+async function calcularFrete(cep) {
+  try {
+    const response = await fetch("http://localhost:3000/api/carrinho/frete", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ cep })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert("Erro: " + data.error);
+      return;
+    }
+
+    // Salva o frete retornado no estado da tela e atualiza o DOM
+    console.log("Frete:", data.frete); // 15.0
+    console.log("Formatado:", data.freteFormatado); // "R$ 15,00"
+  } catch (error) {
+    console.error("Erro ao calcular frete:", error);
+  }
+}
+```
+
+---
+
+

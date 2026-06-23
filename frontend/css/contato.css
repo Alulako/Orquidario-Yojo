@@ -90,17 +90,22 @@ ul {
 
 /* Styles for the Logo in the Header */
 .logo-img {
-    height: 65px; /* Fixed height to prevent excessive zoom */
-    width: auto; /* Maintains correct aspect ratio */
+    height: 65px;
+    /* Fixed height to prevent excessive zoom */
+    width: auto;
+    /* Maintains correct aspect ratio */
     display: block;
-    object-fit: contain; /* Ensures the logo is not cropped */
-    margin-right: 12px; /* Space between the logo and adjacent text */
+    object-fit: contain;
+    /* Ensures the logo is not cropped */
+    margin-right: 12px;
+    /* Space between the logo and adjacent text */
 }
 
 /* Alignment of the brand */
 .brand {
     display: flex;
-    align-items: center; /* Vertically centers the logo with the text */
+    align-items: center;
+    /* Vertically centers the logo with the text */
     text-decoration: none;
 }
 
@@ -285,7 +290,7 @@ ul {
     border-radius: 18px;
     color: var(--color-text);
     padding: 14px 16px;
-    resize: vertical;
+    resize: none;
 }
 
 .field-group input:focus,
@@ -352,7 +357,7 @@ ul {
     margin-top: 20px;
 }
 
-.location-details p + p {
+.location-details p+p {
     margin-top: 10px;
 }
 
@@ -420,7 +425,7 @@ ul {
 }
 
 .site-footer p,
-.footer-list li + li {
+.footer-list li+li {
     margin-top: 8px;
 }
 
@@ -431,6 +436,7 @@ ul {
 }
 
 @media (max-width: 1100px) {
+
     .info-grid,
     .content-layout,
     .footer-grid {

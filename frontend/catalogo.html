@@ -53,31 +53,26 @@
         <section class="catalog-controls">
             <div class="container">
                 <div class="controls-panel">
-                    <form class="search-box" action="#" method="get">
+                    <div class="search-box">
                         <label for="busca" class="sr-only">Buscar produtos</label>
-                        <input id="busca"
-                               name="busca"
-                               type="text"
-                               placeholder="Buscar por orquídeas, vasos ou acessórios">
-                        <button type="submit">Buscar</button>
-                    </form>
+                        <input id="busca" type="text" placeholder="Buscar por nome do produto…" autocomplete="off">
+                        <button type="button" id="btn-busca">Buscar</button>
+                    </div>
 
-                    <div class="filters-group" aria-label="Filtros visuais por categoria">
+                    <div class="filters-group" aria-label="Filtros por categoria">
                         <span class="filters-label">Categorias</span>
-                        <a class="filter-chip is-selected" href="catalogo.html">Todos</a>
-                        <a class="filter-chip" href="categoria.html">Orquídeas</a>
-                        <a class="filter-chip" href="categoria.html">Adubos</a>
-                        <a class="filter-chip" href="categoria.html">Vasos</a>
-                        <a class="filter-chip" href="categoria.html">Acessórios</a>
+                        <button class="filter-chip is-selected" data-cat="Todos">Todos</button>
+                        <button class="filter-chip" data-cat="Orquídeas">Orquídeas</button>
+                        <button class="filter-chip" data-cat="Adubos">Adubos</button>
+                        <button class="filter-chip" data-cat="Vasos">Vasos</button>
+                        <button class="filter-chip" data-cat="Acessórios">Acessórios</button>
                     </div>
 
                     <div class="sort-box">
-                        <label for="ordenacao">Ordenar por</label>
+                        <label for="ordenacao">Ordenar por preço</label>
                         <select id="ordenacao" name="ordenacao">
-                            <option>Mais procurados</option>
-                            <option>Menor preço</option>
-                            <option>Maior preço</option>
-                            <option>Novidades</option>
+                            <option value="asc">Menor preço</option>
+                            <option value="desc">Maior preço</option>
                         </select>
                     </div>
                 </div>
@@ -87,225 +82,100 @@
         <section class="catalog-grid-section section-spacing">
             <div class="container">
                 <div class="results-summary">
-                    <p>Mostrando 12 produtos em destaque para o cultivo e a decoração.</p>
+                    <p id="results-count">Carregando produtos…</p>
                 </div>
-
-                <div class="product-grid">
-                    <article class="product-card">
-                        <img src="assets/OrquideaBranca.png"
-                             alt="Orquídea phalaenopsis branca em vaso">
-                        <div class="product-content">
-                            <div class="product-topline">
-                                <span class="category-label">Orquídeas</span>
-                                <span class="availability in-stock">Disponível</span>
-                            </div>
-                            <h2>Orquídea Phalaenopsis Branca</h2>
-                            <p class="price">R$ 89,90</p>
-                            <p class="product-description">
-                                Flor delicada e sofisticada, ideal para presentear ou compor ambientes elegantes.
-                            </p>
-                            <a class="button button-outline" href="produto.html?id=branca">Ver detalhes</a>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <img src="assets/Roxa.png"
-                             alt="Orquídea lilás com flores abertas">
-                        <div class="product-content">
-                            <div class="product-topline">
-                                <span class="category-label">Orquídeas</span>
-                                <span class="availability in-stock">Disponível</span>
-                            </div>
-                            <h2>Orquídea Dendrobium Lilás</h2>
-                            <p class="price">R$ 74,50</p>
-                            <p class="product-description">
-                                Opção charmosa com coloração suave para colecionadores e decoração natural.
-                            </p>
-                            <a class="button button-outline" href="produto.html?id=roxa">Ver detalhes</a>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <img src="assets/spray.png"
-                             alt="Frasco de adubo líquido para plantas">
-                        <div class="product-content">
-                            <div class="product-topline">
-                                <span class="category-label">Adubos</span>
-                                <span class="availability in-stock">Disponível</span>
-                            </div>
-                            <h2>Adubo Líquido para Floração</h2>
-                            <p class="price">R$ 24,90</p>
-                            <p class="product-description">
-                                Fórmula prática para manutenção frequente e estímulo de florações vigorosas.
-                            </p>
-                            <a class="button button-outline" href="produto.html?id=adubo">Ver detalhes</a>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <img src="assets/vaso2.png"
-                             alt="Vaso decorativo bege para plantas">
-                        <div class="product-content">
-                            <div class="product-topline">
-                                <span class="category-label">Vasos</span>
-                                <span class="availability in-stock">Disponível</span>
-                            </div>
-                            <h2>Vaso Decorativo Bege Claro</h2>
-                            <p class="price">R$ 36,90</p>
-                            <p class="product-description">
-                                Modelo versátil com acabamento leve para valorizar arranjos e plantas ornamentais.
-                            </p>
-                            <a class="button button-outline" href="produto.html?id=vaso">Ver detalhes</a>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <img src="assets/kit.png"
-                             alt="Kit de cultivo com acessórios essenciais">
-                        <div class="product-content">
-                            <div class="product-topline">
-                                <span class="category-label">Acessórios</span>
-                                <span class="availability low-stock">Últimas unidades</span>
-                            </div>
-                            <h2>Kit Básico de Cultivo</h2>
-                            <p class="price">R$ 58,00</p>
-                            <p class="product-description">
-                                Conjunto com itens úteis para rotina de manutenção e cuidado diário das plantas.
-                            </p>
-                            <a class="button button-outline" href="produto.html?id=kit">Ver detalhes</a>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <img src="assets/rosa.png"
-                             alt="Orquídea rosa em destaque">
-                        <div class="product-content">
-                            <div class="product-topline">
-                                <span class="category-label">Orquídeas</span>
-                                <span class="availability in-stock">Disponível</span>
-                            </div>
-                            <h2>Orquídea Oncidium Rosa</h2>
-                            <p class="price">R$ 67,90</p>
-                            <p class="product-description">
-                                Perfil delicado e floral para quem busca leveza e presença visual no ambiente.
-                            </p>
-                            <a class="button button-outline" href="produto.html?id=rosa">Ver detalhes</a>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <img src="assets/verdebranca.png"
-                             alt="Arranjo com flores claras e verdes">
-                        <div class="product-content">
-                            <div class="product-topline">
-                                <span class="category-label">Orquídeas</span>
-                                <span class="availability low-stock">Últimas unidades</span>
-                            </div>
-                            <h2>Mini Orquídea para Presente</h2>
-                            <p class="price">R$ 49,90</p>
-                            <p class="product-description">
-                                Formato compacto com apresentação delicada, ideal para lembranças especiais.
-                            </p>
-                            <a class="button button-outline" href="produto.html?id=mini">Ver detalhes</a>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <img src="assets/paraorquidea.png"
-                             alt="Adubo para Orquideas">
-                        <div class="product-content">
-                            <div class="product-topline">
-                                <span class="category-label">Acessórios</span>
-                                <span class="availability in-stock">Disponível</span>
-                            </div>
-                            <h2>Substrato Especial para Orquídeas</h2>
-                            <p class="price">R$ 18,50</p>
-                            <p class="product-description">
-                                Mistura pensada para favorecer drenagem, aeração e adaptação no replantio.
-                            </p>
-                            <a class="button button-outline" href="produto.html?id=substrato">Ver detalhes</a>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <img src="assets/amarelo.png"
-                             alt="Orquídea amarela em flor">
-                        <div class="product-content">
-                            <div class="product-topline">
-                                <span class="category-label">Orquídeas</span>
-                                <span class="availability in-stock">Disponível</span>
-                            </div>
-                            <h2>Orquídea Amarela Premium</h2>
-                            <p class="price">R$ 94,00</p>
-                            <p class="product-description">
-                                Variedade marcante com flores luminosas para compor ambientes com destaque.
-                            </p>
-                            <a class="button button-outline" href="produto.html?id=amarelo">Ver detalhes</a>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <img src="assets/vaso.png"
-                             alt="Vaso cerâmico claro com acabamento artesanal">
-                        <div class="product-content">
-                            <div class="product-topline">
-                                <span class="category-label">Vasos</span>
-                                <span class="availability in-stock">Disponível</span>
-                            </div>
-                            <h2>Vaso Cerâmico Texturizado</h2>
-                            <p class="price">R$ 42,00</p>
-                            <p class="product-description">
-                                Peça com aparência refinada para complementar projetos florais com suavidade.
-                            </p>
-                            <a class="button button-outline" href="produto.html?id=vaso_ceramico">Ver detalhes</a>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <img src="assets/borrifador.png"
-                             alt="Borrifador para plantas">
-                        <div class="product-content">
-                            <div class="product-topline">
-                                <span class="category-label">Acessórios</span>
-                                <span class="availability in-stock">Disponível</span>
-                            </div>
-                            <h2>Borrifador de Névoa Fina</h2>
-                            <p class="price">R$ 27,90</p>
-                            <p class="product-description">
-                                Acessório prático para manutenção delicada da umidade em plantas ornamentais.
-                            </p>
-                            <a class="button button-outline" href="produto.html?id=borrifador">Ver detalhes</a>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <img src="assets/adubogranulado.png"
-                             alt="Adubo granulado e materiais de cultivo">
-                        <div class="product-content">
-                            <div class="product-topline">
-                                <span class="category-label">Adubos</span>
-                                <span class="availability sold-out">Reposição em breve</span>
-                            </div>
-                            <h2>Adubo Granulado de Manutenção</h2>
-                            <p class="price">R$ 31,90</p>
-                            <p class="product-description">
-                                Indicado para rotinas periódicas de cuidado com foco em nutrição equilibrada.
-                            </p>
-                            <a class="button button-outline" href="produto.html?id=adubo_granulado">Ver detalhes</a>
-                        </div>
-                    </article>
-                </div>
-
-                <nav class="pagination" aria-label="Paginação do catálogo">
-                    <a class="page-link page-arrow" href="catalogo.html">Anterior</a>
-                    <a class="page-link is-current" href="catalogo.html">1</a>
-                    <a class="page-link" href="catalogo.html">2</a>
-                    <a class="page-link" href="catalogo.html">3</a>
-                    <a class="page-link page-arrow" href="catalogo.html">Próxima</a>
-                </nav>
+                <div class="product-grid" id="product-grid"></div>
             </div>
         </section>
     </main>
+
+    <script>
+        const PRODUTOS = [
+            { id: 'branca',       nome: 'Orquídea Phalaenopsis Branca',         categoria: 'Orquídeas',   preco: 89.90,  img: 'assets/OrquideaBranca.png',  desc: 'Flor delicada e sofisticada, ideal para presentear ou compor ambientes elegantes.' },
+            { id: 'roxa',         nome: 'Orquídea Dendrobium Lilás',             categoria: 'Orquídeas',   preco: 74.50,  img: 'assets/Roxa.png',            desc: 'Opção charmosa com coloração suave para colecionadores e decoração natural.' },
+            { id: 'rosa',         nome: 'Orquídea Oncidium Rosa',                categoria: 'Orquídeas',   preco: 67.90,  img: 'assets/rosa.png',            desc: 'Perfil delicado e floral para quem busca leveza e presença visual no ambiente.' },
+            { id: 'amarelo',      nome: 'Orquídea Amarela Premium',              categoria: 'Orquídeas',   preco: 94.00,  img: 'assets/amarelo.png',         desc: 'Variedade marcante com flores luminosas para compor ambientes com destaque.' },
+            { id: 'mini',         nome: 'Mini Orquídea para Presente',           categoria: 'Orquídeas',   preco: 49.90,  img: 'assets/verdebranca.png',     desc: 'Formato compacto com apresentação delicada, ideal para lembranças especiais.' },
+            { id: 'premium',      nome: 'Orquídea Premium Ornamental',           categoria: 'Orquídeas',   preco: 49.90,  img: 'assets/Premium.png',         desc: 'Versão compacta e charmosa para lembranças especiais e decoração ilustre.' },
+            { id: 'interna',      nome: 'Orquídea Branca para Ambientes Internos', categoria: 'Orquídeas', preco: 82.00,  img: 'assets/verdebranca.png',     desc: 'Escolha versátil para salas, recepções e espaços com proposta leve e refinada.' },
+            { id: 'azul',         nome: 'Orquídea Azul Especial para Colecionadores', categoria: 'Orquídeas', preco: 118.00, img: 'assets/Azul.png',        desc: 'Modelo exclusivo pensado para destacar exclusividade e valor ornamental.' },
+            { id: 'olhodeboneca', nome: 'Orquídea Olho de Boneca',              categoria: 'Orquídeas',   preco: 79.90,  img: 'assets/OlhodeBoneca.png',    desc: 'Sugestão para quem quer cor suave, longa duração visual e cuidado prático.' },
+            { id: 'adubo',        nome: 'Adubo Líquido para Floração',           categoria: 'Adubos',      preco: 24.90,  img: 'assets/spray.png',           desc: 'Fórmula prática para manutenção frequente e estímulo de florações vigorosas.' },
+            { id: 'adubo_granulado', nome: 'Adubo Granulado de Manutenção',     categoria: 'Adubos',      preco: 31.90,  img: 'assets/adubogranulado.png',  desc: 'Indicado para rotinas periódicas de cuidado com foco em nutrição equilibrada.' },
+            { id: 'vaso',         nome: 'Vaso Decorativo Bege Claro',            categoria: 'Vasos',       preco: 36.90,  img: 'assets/vaso2.png',           desc: 'Modelo versátil com acabamento leve para valorizar arranjos e plantas ornamentais.' },
+            { id: 'vaso_ceramico', nome: 'Vaso Cerâmico Texturizado',            categoria: 'Vasos',       preco: 42.00,  img: 'assets/vaso.png',            desc: 'Peça com aparência refinada para complementar projetos florais com suavidade.' },
+            { id: 'kit',          nome: 'Kit Básico de Cultivo',                 categoria: 'Acessórios',  preco: 58.00,  img: 'assets/kit.png',             desc: 'Conjunto com itens úteis para rotina de manutenção e cuidado diário das plantas.' },
+            { id: 'substrato',    nome: 'Substrato Especial para Orquídeas',     categoria: 'Acessórios',  preco: 18.50,  img: 'assets/paraorquidea.png',    desc: 'Mistura pensada para favorecer drenagem, aeração e adaptação no replantio.' },
+            { id: 'borrifador',   nome: 'Borrifador de Névoa Fina',              categoria: 'Acessórios',  preco: 27.90,  img: 'assets/borrifador.png',      desc: 'Acessório prático para manutenção delicada da umidade em plantas ornamentais.' },
+        ];
+
+        const grid      = document.getElementById('product-grid');
+        const countEl   = document.getElementById('results-count');
+        const buscaEl   = document.getElementById('busca');
+        const sortEl    = document.getElementById('ordenacao');
+        const chips     = document.querySelectorAll('.filter-chip');
+
+        let catAtiva = 'Todos';
+
+        function fp(v) { return v.toFixed(2).replace('.', ','); }
+
+        function renderizar() {
+            const termo = buscaEl.value.trim().toLowerCase();
+            const ordem = sortEl.value;
+
+            let lista = PRODUTOS.filter(p => {
+                const catOk = catAtiva === 'Todos' || p.categoria === catAtiva;
+                const nomeOk = !termo || p.nome.toLowerCase().includes(termo);
+                return catOk && nomeOk;
+            });
+
+            lista.sort((a, b) => ordem === 'asc' ? a.preco - b.preco : b.preco - a.preco);
+
+            grid.innerHTML = lista.length === 0
+                ? `<p style="grid-column:1/-1;text-align:center;color:#999;padding:60px 0;">Nenhum produto encontrado.</p>`
+                : lista.map(p => `
+                    <article class="product-card">
+                        <img src="${p.img}" alt="${p.nome}" loading="lazy">
+                        <div class="product-content">
+                            <div class="product-topline">
+                                <span class="category-label">${p.categoria}</span>
+                                <span class="availability in-stock">Disponível</span>
+                            </div>
+                            <h2>${p.nome}</h2>
+                            <p class="price">R$ ${fp(p.preco)}</p>
+                            <p class="product-description">${p.desc}</p>
+                            <a class="button button-outline" href="produto.html?id=${p.id}">Ver detalhes</a>
+                        </div>
+                    </article>`).join('');
+
+            const total = lista.length;
+            countEl.textContent = total === PRODUTOS.length
+                ? `${total} produtos disponíveis`
+                : `${total} produto${total !== 1 ? 's' : ''} encontrado${total !== 1 ? 's' : ''}`;
+        }
+
+        // Filtro de categoria
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => c.classList.remove('is-selected'));
+                chip.classList.add('is-selected');
+                catAtiva = chip.dataset.cat;
+                renderizar();
+            });
+        });
+
+        // Busca em tempo real
+        buscaEl.addEventListener('input', renderizar);
+        document.getElementById('btn-busca').addEventListener('click', renderizar);
+        buscaEl.addEventListener('keydown', e => { if (e.key === 'Enter') renderizar(); });
+
+        // Ordenação
+        sortEl.addEventListener('change', renderizar);
+
+        // Render inicial
+        renderizar();
+    </script>
+
 
     <footer class="site-footer">
         <div class="container footer-grid">

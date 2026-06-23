@@ -1,205 +1,197 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Carrinho | Orquidário Yojo</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/carrinho.css">
-
-    <style>
-        .shipping-calculator {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            background: #fafafa;
-        }
-
-        .shipping-input {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-        }
-
-            .shipping-input input {
-                flex: 1;
-                padding: 0.6rem;
-                border: 1px solid #ccc;
-                border-radius: 6px;
-            }
-
-            .shipping-input button {
-                padding: 0.6rem 1rem;
-                border: none;
-                background: #2d6a4f;
-                color: white;
-                border-radius: 6px;
-                cursor: pointer;
-            }
-
-                .shipping-input button:hover {
-                    background: #1b4332;
-                }
-
-        #frete-msg {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Carrinho | Orquidário Yojo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/carrinho.css">
 </head>
 
 <body>
-    <header class="site-header">
-        <div class="container header-wrapper">
-            <a class="brand" href="index.html">
-                <img src="assets/logo.png" alt="Logo Orquidário Yojo" class="logo-img">
-                <span class="brand-text">
-                    <strong>Orquidário Yojo</strong>
-                    <small>Flores e cultivo no CEAGESP</small>
-                </span>
-            </a>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-wrapper">
+        <a href="index.html" class="brand">
+          <img src="assets/logo.png" alt="Orquidário Yojo" class="logo-img">
+          <div class="brand-text">
+            <strong>Orquidário Yojo</strong>
+            <small>Flores e cultivo no CEAGESP</small>
+          </div>
+        </a>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="categoria.html">Categorias</a></li>
+            <li><a href="carrinho.html">Carrinho</a></li>
+            <li><a href="contato.html">Fale Conosco</a></li>
 
-            <nav class="main-nav" aria-label="Menu principal">
-                <ul>
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="catalogo.html">Catálogo</a></li>
-                    <li><a href="categoria.html">Categorias</a></li>
-                    <li><a href="carrinho.html">Carrinho</a></li>
-                    <li><a href="contato.html">Fale Conosco</a></li>
-                    <!-- <li><a href="admin.html">Área do administrador</a></li> -->
-                </ul>
-            </nav>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="cart-section">
+    <div class="container">
+      <div class="cart-header">
+        <span class="section-tag">Revisão</span>
+        <h1>Meu Carrinho</h1>
+      </div>
+      <div class="cart-layout">
+        <div class="items-card">
+          <div class="items-header">
+            <span>Produto</span>
+            <span>Subtotal</span>
+          </div>
+          <div class="cart-items"></div>
+          <a href="catalogo.html" class="continue-link">← Continuar comprando</a>
         </div>
-    </header>
-
-    <main>
-        <section class="cart-section">
-            <div class="container">
-
-                <div class="cart-header">
-                    <h1>Meu Carrinho</h1>
-                </div>
-
-                <div class="cart-layout">
-
-                    <!-- ITENS -->
-                    <section class="cart-items">
-
-                        <article class="cart-item">
-                            <img src="assets/Branca.png">
-                            <div class="item-info">
-                                <h3>Orquídea Phalaenopsis Branca</h3>
-                                <p>Preço unitário: R$ 89,90</p>
-                                <p>Quantidade: 1</p>
-                            </div>
-                            <div class="item-pricing">
-                                <p>Subtotal: R$ 89,90</p>
-                            </div>
-                        </article>
-
-                        <article class="cart-item">
-                            <img src="assets/spray.png">
-                            <div class="item-info">
-                                <h3>Adubo Líquido para Floração</h3>
-                                <p>Preço unitário: R$ 24,90</p>
-                                <p>Quantidade: 2</p>
-                            </div>
-                            <div class="item-pricing">
-                                <p>Subtotal: R$ 49,80</p>
-                            </div>
-                        </article>
-
-                        <article class="cart-item">
-                            <img src="assets/vaso.png">
-                            <div class="item-info">
-                                <h3>Vaso Decorativo Bege</h3>
-                                <p>Preço unitário: R$ 36,90</p>
-                                <p>Quantidade: 1</p>
-                            </div>
-                            <div class="item-pricing">
-                                <p>Subtotal: R$ 36,90</p>
-                            </div>
-                        </article>
-
-                        <!--CALCULO DE FRETE (AQUI, ABAIXO DOS PRODUTOS) -->
-                        <div class="shipping-calculator">
-                            <h3>Calcular frete</h3>
-                            <div class="shipping-input">
-                                <input type="text" id="cep" placeholder="Digite seu CEP">
-                                <button onclick="calcularFrete()">Calcular</button>
-                            </div>
-                            <p id="frete-msg"></p>
-                        </div>
-
-                        <a class="continue-link" href="catalogo.html">Continuar comprando</a>
-
-                    </section>
-
-                    <!-- RESUMO -->
-                    <aside class="summary-card">
-
-                        <h2>Resumo do pedido</h2>
-
-                        <div class="summary-row">
-                            <span>Subtotal</span>
-                            <strong id="subtotal">R$ 176,60</strong>
-                        </div>
-
-                        <div class="summary-row">
-                            <span>Frete estimado</span>
-                            <strong id="frete-resumo">R$ 18,00</strong>
-                        </div>
-
-                        <div class="summary-row total-row">
-                            <span>Total</span>
-                            <strong id="total">R$ 194,60</strong>
-                        </div>
-
-                        <a class="button button-primary" href="checkout.html">Finalizar pedido</a>
-
-                    </aside>
-
-                </div>
+        <div class="summary-card">
+          <h2>Resumo do Pedido</h2>
+          <div class="summary-rows">
+            <div class="summary-row"><span>Subtotal</span><span>R$ 0,00</span></div>
+            <div class="summary-row"><span>Frete</span><span>R$ 0,00</span></div>
+            <div class="total-row summary-row"><span>Total</span><strong>R$ 0,00</strong></div>
+          </div>
+          <div class="frete-calculator">
+            <label>Calcular frete</label>
+            <div style="display:flex;gap:8px;margin-top:8px;">
+              <input type="text" id="cep-input" placeholder="00000-000" maxlength="9"
+                style="flex:1;padding:12px 14px;border-radius:999px;border:1px solid rgba(47,79,62,0.12);background:var(--color-surface);">
+              <button id="btn-calcular-frete"
+                style="margin-top:0;padding:12px 20px;border-radius:999px;border:0;background:var(--color-secondary);color:white;font-weight:600;cursor:pointer;">Calcular</button>
             </div>
-        </section>
-    </main>
+          </div>
+          <a href="checkout.html" class="button button-primary">Finalizar Pedido</a>
+          <p class="summary-note">Entregamos para todo o Brasil</p>
+        </div>
+      </div>
+    </div>
+  </main>
 
-    <script>
-        function formatar(valor) {
-            return "R$ " + valor.toFixed(2).replace(".", ",");
-        }
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Orquidário Yojo</h3>
+          <p>Flores e cultivo no CEAGESP.<br>Tradição e qualidade desde 1998.</p>
+        </div>
+        <div>
+          <h3>Contato</h3>
+          <p>(11) 99872-6880</p>
+          <p>orquidarioyojo@gmail.com</p>
+        </div>
+        <div>
+          <h3>Localização</h3>
+          <p>CEAGESP - Box 47</p>
+          <p>São Paulo - SP</p>
+        </div>
+        <div>
+          <h3>Horários</h3>
+          <p>Seg-Sex: 6h às 16h</p>
+          <p>Sáb: 6h às 12h</p>
+        </div>
+        <div>
+          <h3>Links</h3>
+          <ul class="footer-list">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-        function calcularFrete() {
-            const cep = document.getElementById("cep").value.replace(/\D/g, "");
-            const msg = document.getElementById("frete-msg");
+  <script>
+    let carrinhoItens = JSON.parse(localStorage.getItem('carrinhoItens')) || [
+      { id: 1, nome: 'Orquídea Phalaenopsis Branca', tipo: 'Orquídea', precoUnitario: 89.90, quantidade: 1, imagem: 'orquideas/phalaenopsis-branca.png' },
+      { id: 5, nome: 'Adubo Líquido para Floração', tipo: 'Adubo', precoUnitario: 24.90, quantidade: 2, imagem: 'adubos/adubo-liquido-floracao.png' }
+    ];
+    let frete = parseFloat(localStorage.getItem('frete')) || 0;
 
-            if (cep.length !== 8) {
-                msg.innerText = "Digite um CEP válido.";
-                msg.style.color = "red";
-                return;
-            }
+    const fp = v => v.toFixed(2).replace('.', ',');
 
-            let frete = 0;
+    const atualizarResumo = () => {
+      const sub = carrinhoItens.reduce((a, i) => a + i.precoUnitario * i.quantidade, 0);
+      const tot = sub + frete;
+      const rows = document.querySelectorAll('.summary-rows .summary-row');
+      if (rows[0]) rows[0].querySelector('span:last-child').textContent = `R$ ${fp(sub)}`;
+      if (rows[1]) rows[1].querySelector('span:last-child').textContent = `R$ ${fp(frete)}`;
+      const ts = document.querySelector('.total-row strong');
+      if (ts) ts.textContent = `R$ ${fp(tot)}`;
+    };
 
-            if (cep.startsWith("01") || cep.startsWith("02")) {
-                frete = 15;
-            } else if (cep.startsWith("1")) {
-                frete = 20;
-            } else {
-                frete = 30;
-            }
+    const renderizar = () => {
+      const c = document.querySelector('.cart-items');
+      if (!c) return;
+      c.innerHTML = '';
+      carrinhoItens.forEach(item => {
+        const d = document.createElement('div');
+        d.className = 'cart-item';
+        d.dataset.id = item.id;
+        d.innerHTML = `<div class="item-image"><img src="/assets/${item.imagem}" alt="${item.nome}" onerror="this.src='https://placehold.co/300x300/2f4f3e/ffffff?text=Produto'"></div>
+        <div class="item-info"><h3>${item.nome}</h3><p class="item-type">${item.tipo}</p><p class="item-price">R$ ${fp(item.precoUnitario)}</p></div>
+        <div class="item-pricing"><div class="quantity-controls">
+            <button class="qty-btn qty-minus" data-id="${item.id}">−</button>
+            <span class="item-quantity">${item.quantidade}</span>
+            <button class="qty-btn qty-plus" data-id="${item.id}">+</button>
+        </div><span class="item-subtotal">R$ ${fp(item.precoUnitario * item.quantidade)}</span></div>
+        <button class="remove-link" data-id="${item.id}">Remover</button>`;
+        c.appendChild(d);
+      });
+      localStorage.setItem('carrinhoItens', JSON.stringify(carrinhoItens));
+      localStorage.setItem('frete', JSON.stringify(frete));
+      atualizarResumo();
+    };
 
-            msg.innerText = "Frete: " + formatar(frete);
-            msg.style.color = "green";
+    document.addEventListener('click', e => {
+      const id = parseInt(e.target.dataset?.id);
+      if (e.target.classList.contains('qty-plus')) {
+        const item = carrinhoItens.find(i => i.id === id);
+        if (item) { item.quantidade++; renderizar(); }
+      }
+      if (e.target.classList.contains('qty-minus')) {
+        const item = carrinhoItens.find(i => i.id === id);
+        if (item && item.quantidade > 1) { item.quantidade--; renderizar(); }
+      }
+      if (e.target.classList.contains('remove-link')) {
+        carrinhoItens = carrinhoItens.filter(i => i.id !== id);
+        renderizar();
+      }
+    });
 
-            const subtotal = 176.60;
+    document.getElementById('btn-calcular-frete')?.addEventListener('click', async () => {
+      const cep = document.getElementById('cep-input')?.value?.trim();
+      if (!cep) return;
+      try {
+        const r = await fetch('/api/carrinho/frete', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ cep })
+        });
+        if (!r.ok) return;
+        const d = await r.json();
+        frete = parseFloat(d.frete) || 0;
+        localStorage.setItem('frete', JSON.stringify(frete));
+        atualizarResumo();
+      } catch { }
+    });
 
-            document.getElementById("frete-resumo").innerText = formatar(frete);
-            document.getElementById("total").innerText = formatar(subtotal + frete);
-        }
-    </script>
+    document.querySelector('.button-primary')?.addEventListener('click', e => {
+      if (carrinhoItens.length === 0) { e.preventDefault(); alert('Carrinho vazio'); }
+      else {
+        localStorage.setItem('carrinhoItens', JSON.stringify(carrinhoItens));
+        localStorage.setItem('frete', JSON.stringify(frete));
+      }
+    });
 
+    renderizar();
+  </script>
 </body>
+
 </html>
