@@ -7,7 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon-yojo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/checkout.css">
+  <link rel="stylesheet" href="css/visual-polish.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
 </head>
 <body>
@@ -44,9 +46,7 @@
       </div>
 
       <div class="checkout-layout">
-        <!-- FORMULÁRIOS -->
         <div class="checkout-form-card">
-          <!-- DADOS PESSOAIS -->
           <div class="form-section">
             <div class="section-head">
               <h2>Dados Pessoais</h2>
@@ -68,7 +68,6 @@
             </div>
           </div>
 
-          <!-- ENDEREÇO -->
           <div class="form-section">
             <div class="section-head">
               <h2>Endereço de Entrega</h2>
@@ -113,7 +112,6 @@
             </div>
           </div>
 
-          <!-- PAGAMENTO -->
           <div class="form-section">
             <div class="section-head">
               <h2>Forma de Pagamento</h2>
@@ -150,7 +148,6 @@
           </div>
         </div>
 
-        <!-- RESUMO -->
         <div class="summary-card">
           <h2>Resumo do Pedido</h2>
           <div class="summary-items"></div>
@@ -193,21 +190,25 @@
     if (!carrinho || carrinho.length === 0) { window.location.href = 'carrinho.html'; return; }
 
     const frete = parseFloat(localStorage.getItem('frete')) || 0;
+    const cepSalvo = localStorage.getItem('cepEntrega') || '';
 
-    const fp = v => v.toFixed(2).replace('.', ',');
-    const fc = v => { const d = v.replace(/\D/g,'').slice(0,8); return d.length>5 ? d.slice(0,5)+'-'+d.slice(5) : d; };
+    const fp = v => Number(v || 0).toFixed(2).replace('.', ',');
+    const fc = v => { const d = String(v || '').replace(/\D/g,'').slice(0,8); return d.length>5 ? d.slice(0,5)+'-'+d.slice(5) : d; };
+    const g = id => document.getElementById(id)?.value?.trim() || '';
 
     const renderResumo = () => {
         const container = document.querySelector('.summary-items');
-        const sub = carrinho.reduce((a,i) => a + i.precoUnitario * i.quantidade, 0);
+        const sub = carrinho.reduce((a,i) => a + Number(i.precoUnitario || 0) * Number(i.quantidade || 0), 0);
         const tot = sub + frete;
         container.innerHTML = carrinho.map(i =>
-        `<div class="summary-item"><span>${i.quantidade}x ${i.nome}</span><span><strong>R$ ${fp(i.precoUnitario * i.quantidade)}</strong></span></div>`
+        `<div class="summary-item"><span>${i.quantidade}x ${i.nome}</span><span><strong>R$ ${fp(Number(i.precoUnitario || 0) * Number(i.quantidade || 0))}</strong></span></div>`
         ).join('');
         document.getElementById('subtotal').textContent = `R$ ${fp(sub)}`;
         document.getElementById('frete').textContent = `R$ ${fp(frete)}`;
         document.getElementById('total').textContent = `R$ ${fp(tot)}`;
     };
+
+    if (cepSalvo) document.getElementById('cep').value = fc(cepSalvo);
 
     document.getElementById('cep').addEventListener('input', async e => {
         e.target.value = fc(e.target.value);
@@ -233,31 +234,52 @@
         });
     });
 
-    document.getElementById('btn-confirmar').addEventListener('click', async () => {
-        const g = id => document.getElementById(id)?.value?.trim() || '';
-        const sel = document.querySelector('input[name="pagamento"]:checked');
-        if (!g('nome') || !g('telefone') || !g('cep')) return alert('Preencha nome, telefone e CEP');
+    function feedback(texto, erro = false) {
+        const note = document.querySelector('.checkout-note');
+        if (!note) return;
+        note.textContent = texto;
+        note.style.color = erro ? '#9d2f2f' : '';
+    }
 
-        try {
-        const r = await fetch('/api/carrinho/finalizar', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-            cliente: { nome: g('nome'), email: g('email'), telefone: g('telefone') },
-            entrega: { cep: g('cep'), endereco: g('endereco'), numero: g('numero'), bairro: g('bairro'), cidade: g('cidade'), estado: g('estado') },
-            pagamento: { metodo: sel?.value || '', troco: sel?.value === 'Dinheiro' ? (document.getElementById('troco')?.value || null) : null },
-            itens: carrinho.map(i => ({ nome: i.nome, quantidade: i.quantidade, precoUnitario: i.precoUnitario })),
-            frete: frete
-            })
-        });
-        if (!r.ok) { return alert('Erro ao finalizar pedido'); }
-        const data = await r.json();
-        if (data.whatsappUrl) {
-            localStorage.removeItem('carrinhoItens');
-            localStorage.removeItem('frete');
-            window.location.href = data.whatsappUrl;
-        }
-        } catch { alert('Erro de conexão'); }
+    document.getElementById('btn-confirmar').addEventListener('click', () => {
+        const sel = document.querySelector('input[name="pagamento"]:checked');
+        if (!g('nome') || !g('telefone')) { feedback('Preencha nome e telefone para confirmar o pedido.', true); return; }
+        if (!sel) { feedback('Escolha uma forma de pagamento.', true); return; }
+
+        const sub = carrinho.reduce((a,i) => a + Number(i.precoUnitario || 0) * Number(i.quantidade || 0), 0);
+        const tot = sub + frete;
+        const produtosTexto = carrinho.map(i => `- ${i.quantidade}x ${i.nome} - R$ ${fp(Number(i.precoUnitario || 0) * Number(i.quantidade || 0))}`).join('\n');
+        const enderecoTexto = [
+            g('endereco'),
+            g('numero') ? `nº ${g('numero')}` : '',
+            g('bairro'),
+            g('cidade') && g('estado') ? `${g('cidade')}/${g('estado')}` : (g('cidade') || g('estado')),
+            g('cep') ? `CEP ${fc(g('cep'))}` : ''
+        ].filter(Boolean).join(', ');
+
+        const mensagem = [
+            'Olá, Orquidário Yojo! Gostaria de fazer um pedido:',
+            '',
+            'Produtos:',
+            produtosTexto,
+            '',
+            `Subtotal: R$ ${fp(sub)}`,
+            `Frete: R$ ${fp(frete)}`,
+            `Total: R$ ${fp(tot)}`,
+            '',
+            `Forma de pagamento: ${sel.value}`,
+            sel.value === 'Dinheiro' && document.getElementById('troco')?.value ? `Troco para: R$ ${fp(Number(document.getElementById('troco').value))}` : '',
+            '',
+            'Dados do cliente:',
+            `Nome: ${g('nome')}`,
+            `Telefone: ${g('telefone')}`,
+            g('email') ? `E-mail: ${g('email')}` : '',
+            enderecoTexto ? `Endereço: ${enderecoTexto}` : ''
+        ].filter(l => l !== '').join('\n');
+
+        localStorage.removeItem('carrinhoItens');
+        localStorage.removeItem('frete');
+        window.location.href = `https://wa.me/5511998726880?text=${encodeURIComponent(mensagem)}`;
     });
 
     renderResumo();

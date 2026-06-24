@@ -396,6 +396,9 @@ table {
 }
 
 .action-button {
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
     border-radius: 999px;
     font-size: 0.82rem;
     font-weight: 600;

@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   listarProdutos,
   listarDestaques,
+  buscarPorId,
   buscarPorSlug,
   criarProduto,
   atualizarProduto,
@@ -14,6 +15,7 @@ const router = Router();
 
 router.get("/", listarProdutos);
 router.get("/destaques", listarDestaques);
+router.get("/id/:id", buscarPorId);
 router.get("/:slug", buscarPorSlug);
 
 router.post("/", authMiddleware, upload.single("imagem"), criarProduto);

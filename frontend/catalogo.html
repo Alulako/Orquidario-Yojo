@@ -10,7 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
+    <link rel="icon" href="assets/favicon-yojo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="css/catalogo.css">
+    <link rel="stylesheet" href="css/visual-polish.css">
 </head>
 <body>
     <header class="site-header">
@@ -90,63 +92,72 @@
     </main>
 
     <script>
-        const PRODUTOS = [
-            { id: 'branca',       nome: 'Orquídea Phalaenopsis Branca',         categoria: 'Orquídeas',   preco: 89.90,  img: 'assets/OrquideaBranca.png',  desc: 'Flor delicada e sofisticada, ideal para presentear ou compor ambientes elegantes.' },
-            { id: 'roxa',         nome: 'Orquídea Dendrobium Lilás',             categoria: 'Orquídeas',   preco: 74.50,  img: 'assets/Roxa.png',            desc: 'Opção charmosa com coloração suave para colecionadores e decoração natural.' },
-            { id: 'rosa',         nome: 'Orquídea Oncidium Rosa',                categoria: 'Orquídeas',   preco: 67.90,  img: 'assets/rosa.png',            desc: 'Perfil delicado e floral para quem busca leveza e presença visual no ambiente.' },
-            { id: 'amarelo',      nome: 'Orquídea Amarela Premium',              categoria: 'Orquídeas',   preco: 94.00,  img: 'assets/amarelo.png',         desc: 'Variedade marcante com flores luminosas para compor ambientes com destaque.' },
-            { id: 'mini',         nome: 'Mini Orquídea para Presente',           categoria: 'Orquídeas',   preco: 49.90,  img: 'assets/verdebranca.png',     desc: 'Formato compacto com apresentação delicada, ideal para lembranças especiais.' },
-            { id: 'premium',      nome: 'Orquídea Premium Ornamental',           categoria: 'Orquídeas',   preco: 49.90,  img: 'assets/Premium.png',         desc: 'Versão compacta e charmosa para lembranças especiais e decoração ilustre.' },
-            { id: 'interna',      nome: 'Orquídea Branca para Ambientes Internos', categoria: 'Orquídeas', preco: 82.00,  img: 'assets/verdebranca.png',     desc: 'Escolha versátil para salas, recepções e espaços com proposta leve e refinada.' },
-            { id: 'azul',         nome: 'Orquídea Azul Especial para Colecionadores', categoria: 'Orquídeas', preco: 118.00, img: 'assets/Azul.png',        desc: 'Modelo exclusivo pensado para destacar exclusividade e valor ornamental.' },
-            { id: 'olhodeboneca', nome: 'Orquídea Olho de Boneca',              categoria: 'Orquídeas',   preco: 79.90,  img: 'assets/OlhodeBoneca.png',    desc: 'Sugestão para quem quer cor suave, longa duração visual e cuidado prático.' },
-            { id: 'adubo',        nome: 'Adubo Líquido para Floração',           categoria: 'Adubos',      preco: 24.90,  img: 'assets/spray.png',           desc: 'Fórmula prática para manutenção frequente e estímulo de florações vigorosas.' },
-            { id: 'adubo_granulado', nome: 'Adubo Granulado de Manutenção',     categoria: 'Adubos',      preco: 31.90,  img: 'assets/adubogranulado.png',  desc: 'Indicado para rotinas periódicas de cuidado com foco em nutrição equilibrada.' },
-            { id: 'vaso',         nome: 'Vaso Decorativo Bege Claro',            categoria: 'Vasos',       preco: 36.90,  img: 'assets/vaso2.png',           desc: 'Modelo versátil com acabamento leve para valorizar arranjos e plantas ornamentais.' },
-            { id: 'vaso_ceramico', nome: 'Vaso Cerâmico Texturizado',            categoria: 'Vasos',       preco: 42.00,  img: 'assets/vaso.png',            desc: 'Peça com aparência refinada para complementar projetos florais com suavidade.' },
-            { id: 'kit',          nome: 'Kit Básico de Cultivo',                 categoria: 'Acessórios',  preco: 58.00,  img: 'assets/kit.png',             desc: 'Conjunto com itens úteis para rotina de manutenção e cuidado diário das plantas.' },
-            { id: 'substrato',    nome: 'Substrato Especial para Orquídeas',     categoria: 'Acessórios',  preco: 18.50,  img: 'assets/paraorquidea.png',    desc: 'Mistura pensada para favorecer drenagem, aeração e adaptação no replantio.' },
-            { id: 'borrifador',   nome: 'Borrifador de Névoa Fina',              categoria: 'Acessórios',  preco: 27.90,  img: 'assets/borrifador.png',      desc: 'Acessório prático para manutenção delicada da umidade em plantas ornamentais.' },
-        ];
+        const API_BASE = window.location.port === '3000' ? '/api' : 'http://localhost:3000/api';
+        const PRODUTOS = [];
 
-        const grid      = document.getElementById('product-grid');
-        const countEl   = document.getElementById('results-count');
-        const buscaEl   = document.getElementById('busca');
-        const sortEl    = document.getElementById('ordenacao');
-        const chips     = document.querySelectorAll('.filter-chip');
+        const grid = document.getElementById('product-grid');
+        const countEl = document.getElementById('results-count');
+        const buscaEl = document.getElementById('busca');
+        const sortEl = document.getElementById('ordenacao');
+        const chips = document.querySelectorAll('.filter-chip');
 
         let catAtiva = 'Todos';
 
-        function fp(v) { return v.toFixed(2).replace('.', ','); }
+        function fp(v) { return Number(v || 0).toFixed(2).replace('.', ','); }
+
+        function escapar(texto) {
+            const div = document.createElement('div');
+            div.textContent = String(texto ?? '');
+            return div.innerHTML;
+        }
+
+        function categoriaNome(produto) {
+            return produto.categoria?.nome || produto.categoria || 'Sem categoria';
+        }
+
+        function imagemProduto(produto) {
+            return produto.imagemUrl || produto.img || 'https://placehold.co/600x500/2f4f3e/ffffff?text=Produto';
+        }
+
+        function disponibilidade(produto) {
+            const status = String(produto.status || '').toLowerCase();
+            if (Number(produto.estoque || 0) <= 0 || ['inativo', 'indisponível', 'indisponivel', 'rascunho', 'oculto'].includes(status)) {
+                return { classe: '', texto: 'Indisponível' };
+            }
+            return { classe: 'in-stock', texto: 'Disponível' };
+        }
 
         function renderizar() {
             const termo = buscaEl.value.trim().toLowerCase();
             const ordem = sortEl.value;
 
             let lista = PRODUTOS.filter(p => {
-                const catOk = catAtiva === 'Todos' || p.categoria === catAtiva;
-                const nomeOk = !termo || p.nome.toLowerCase().includes(termo);
+                const catOk = catAtiva === 'Todos' || categoriaNome(p) === catAtiva;
+                const nomeOk = !termo || String(p.nome || '').toLowerCase().includes(termo);
                 return catOk && nomeOk;
             });
 
-            lista.sort((a, b) => ordem === 'asc' ? a.preco - b.preco : b.preco - a.preco);
+            lista.sort((a, b) => ordem === 'asc' ? Number(a.preco) - Number(b.preco) : Number(b.preco) - Number(a.preco));
 
             grid.innerHTML = lista.length === 0
                 ? `<p style="grid-column:1/-1;text-align:center;color:#999;padding:60px 0;">Nenhum produto encontrado.</p>`
-                : lista.map(p => `
+                : lista.map(p => {
+                    const disp = disponibilidade(p);
+                    return `
                     <article class="product-card">
-                        <img src="${p.img}" alt="${p.nome}" loading="lazy">
+                        <img src="${escapar(imagemProduto(p))}" alt="${escapar(p.nome)}" loading="lazy" onerror="this.src='https://placehold.co/600x500/2f4f3e/ffffff?text=Produto'">
                         <div class="product-content">
                             <div class="product-topline">
-                                <span class="category-label">${p.categoria}</span>
-                                <span class="availability in-stock">Disponível</span>
+                                <span class="category-label">${escapar(categoriaNome(p))}</span>
+                                <span class="availability ${disp.classe}">${escapar(disp.texto)}</span>
                             </div>
-                            <h2>${p.nome}</h2>
+                            <h2>${escapar(p.nome)}</h2>
                             <p class="price">R$ ${fp(p.preco)}</p>
-                            <p class="product-description">${p.desc}</p>
-                            <a class="button button-outline" href="produto.html?id=${p.id}">Ver detalhes</a>
+                            <p class="product-description">${escapar(p.resumo || p.desc || 'Produto cadastrado no catálogo do orquidário.')}</p>
+                            <a class="button button-outline" href="produto.html?id=${encodeURIComponent(p.id)}">Ver detalhes</a>
                         </div>
-                    </article>`).join('');
+                    </article>`;
+                }).join('');
 
             const total = lista.length;
             countEl.textContent = total === PRODUTOS.length
@@ -154,7 +165,19 @@
                 : `${total} produto${total !== 1 ? 's' : ''} encontrado${total !== 1 ? 's' : ''}`;
         }
 
-        // Filtro de categoria
+        async function carregarProdutos() {
+            try {
+                const resposta = await fetch(`${API_BASE}/produtos?limite=200&ordenar=recentes`, { cache: 'no-store' });
+                const data = await resposta.json().catch(() => ({}));
+                if (!resposta.ok) throw new Error(data.message || 'Não foi possível carregar produtos.');
+                PRODUTOS.splice(0, PRODUTOS.length, ...(Array.isArray(data.produtos) ? data.produtos : []));
+                renderizar();
+            } catch (err) {
+                countEl.textContent = 'Backend indisponível. Suba o servidor local para carregar o catálogo do banco.';
+                grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:#999;padding:60px 0;">${escapar(err.message || 'Erro ao carregar produtos.')}</p>`;
+            }
+        }
+
         chips.forEach(chip => {
             chip.addEventListener('click', () => {
                 chips.forEach(c => c.classList.remove('is-selected'));
@@ -164,16 +187,12 @@
             });
         });
 
-        // Busca em tempo real
         buscaEl.addEventListener('input', renderizar);
         document.getElementById('btn-busca').addEventListener('click', renderizar);
         buscaEl.addEventListener('keydown', e => { if (e.key === 'Enter') renderizar(); });
-
-        // Ordenação
         sortEl.addEventListener('change', renderizar);
 
-        // Render inicial
-        renderizar();
+        carregarProdutos();
     </script>
 
 

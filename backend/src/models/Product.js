@@ -27,6 +27,11 @@ const Product = sequelize.define("Product", {
     defaultValue: 0,
     validate: { min: 0 },
   },
+  status: {
+    type: DataTypes.STRING(40),
+    allowNull: false,
+    defaultValue: "Ativo",
+  },
   resumo: {
     type: DataTypes.STRING(255),
     allowNull: true,

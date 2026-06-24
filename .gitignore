@@ -1,3 +1,43 @@
+# Dependencias
 node_modules/
+**/node_modules/
+
+# Variaveis de ambiente e segredos
 .env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+
+# Pastas/arquivos de agentes e ferramentas locais
+.claude/
+**/.claude/
+.codex/
+**/.codex/
+.devspace/
+**/.devspace/
+
+# Uploads e arquivos gerados localmente
+backend/uploads/
+**/uploads/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporarios do sistema/editor
 .DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.tmp
+*.temp
+frontend/tmp_check.txt
+servidor-local.py
+
+# Cache/build local
+.cache/
+dist/
+build/
+coverage/
