@@ -10,14 +10,6 @@ node_modules/
 !.env.example
 !**/.env.example
 
-# Pastas/arquivos de agentes e ferramentas locais
-.claude/
-**/.claude/
-.codex/
-**/.codex/
-.devspace/
-**/.devspace/
-
 # Uploads e arquivos gerados localmente
 backend/uploads/
 **/uploads/
