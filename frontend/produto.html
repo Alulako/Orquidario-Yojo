@@ -11,7 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <link rel="icon" href="assets/favicon-yojo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="css/produto.css">
+    <link rel="stylesheet" href="css/visual-polish.css">
 </head>
 
 <body>
@@ -133,7 +135,7 @@
                             <span class="related-type">Orquídeas</span>
                             <h3>Orquídea Dendrobium Lilás</h3>
                             <p class="related-price">R$ 74,50</p>
-                            <a class="button button-outline" href="produto.html?id=roxa">Ver detalhes</a>
+                            <a class="button button-outline" href="produto.html?id=2">Ver detalhes</a>
                         </div>
                     </article>
 
@@ -143,7 +145,7 @@
                             <span class="related-type">Orquídeas</span>
                             <h3>Orquídea Amarela Premium</h3>
                             <p class="related-price">R$ 94,00</p>
-                            <a class="button button-outline" href="produto.html?id=amarelo">Ver detalhes</a>
+                            <a class="button button-outline" href="produto.html?id=4">Ver detalhes</a>
                         </div>
                     </article>
 
@@ -153,7 +155,7 @@
                             <span class="related-type">Adubos</span>
                             <h3>Adubo Líquido para Floração</h3>
                             <p class="related-price">R$ 24,90</p>
-                            <a class="button button-outline" href="produto.html?id=adubo">Ver detalhes</a>
+                            <a class="button button-outline" href="produto.html?id=6">Ver detalhes</a>
                         </div>
                     </article>
 
@@ -163,7 +165,7 @@
                             <span class="related-type">Vasos</span>
                             <h3>Vaso Decorativo Bege Claro</h3>
                             <p class="related-price">R$ 36,90</p>
-                            <a class="button button-outline" href="produto.html?id=vaso">Ver detalhes</a>
+                            <a class="button button-outline" href="produto.html?id=8">Ver detalhes</a>
                         </div>
                     </article>
                 </div>
@@ -205,7 +207,6 @@
                 <ul class="footer-list">
                     <li><a href="index.html">Início</a></li>
                     <li><a href="catalogo.html">Catálogo</a></li>
-                    <li><a href="categoria.html">Categorias</a></li>
                     <li><a href="contato.html">Contato</a></li>
                 </ul>
             </div>
@@ -213,361 +214,185 @@
     </footer>
 
     <script>
-        // 1. Banco de Dados Simulado Completo
-        const produtos = {
-            "branca": {
-                nome: "Orquídea Phalaenopsis Branca",
-                categoria: "Orquídeas",
-                preco: "R$ 89,90",
-                resumo: "Flor delicada e sofisticada, ideal para presentear ou compor ambientes elegantes.",
-                descricao: "A Orquídea Phalaenopsis Branca é uma das variedades mais procuradas por sua floração marcante e visual refinado. Indicada tanto para decoração quanto para presente.",
-                cuidados: [
-                    "Manter em local iluminado, sem sol direto intenso.",
-                    "Regar de forma moderada, evitando encharcamento.",
-                    "Garantir boa ventilação e ambiente protegido."
-                ],
-                imagemPrincipal: "assets/OrquideaBranca.png"
-            },
-            "roxa": {
-                nome: "Orquídea Dendrobium Lilás",
-                categoria: "Orquídeas",
-                preco: "R$ 74,50",
-                resumo: "Opção charmosa com coloração suave para colecionadores e decoração natural.",
-                descricao: "A Dendrobium Lilás destaca-se pelos seus tons florais que trazem uma atmosfera de tranquilidade ao ambiente. É uma excelente opção para quem já tem alguma experiência com o cultivo.",
-                cuidados: [
-                    "Gosta de bastante claridade matinal.",
-                    "Regar apenas quando o substrato estiver seco ao toque.",
-                    "Adubar quinzenalmente durante a primavera."
-                ],
-                imagemPrincipal: "assets/Roxa.png"
-            },
-            "adubo": {
-                nome: "Adubo Líquido para Floração",
-                categoria: "Adubos",
-                preco: "R$ 24,90",
-                resumo: "Fórmula prática para manutenção frequente e estímulo de florações vigorosas.",
-                descricao: "Este adubo foi desenvolvido especificamente para fornecer os nutrientes necessários na fase de floração das suas orquídeas, garantindo cores mais vivas e flores mais duradouras.",
-                cuidados: [
-                    "Agitar bem antes de usar.",
-                    "Borrifar nas folhas e raízes 1 vez por semana.",
-                    "Não aplicar sob sol forte ou nas horas de maior calor."
-                ],
-                imagemPrincipal: "assets/spray.png"
-            },
-            "vaso": {
-                nome: "Vaso Decorativo Bege Claro",
-                categoria: "Vasos",
-                preco: "R$ 36,90",
-                resumo: "Modelo versátil com acabamento leve para valorizar arranjos e plantas ornamentais.",
-                descricao: "Vaso de alta qualidade com acabamento impecável, ideal para enquadrar perfeitamente a sua orquídea favorita e ajudar na respiração das raízes.",
-                cuidados: [
-                    "Limpar apenas com pano húmido.",
-                    "Não utilizar produtos químicos abrasivos.",
-                    "Garantir furos na base se for plantar diretamente."
-                ],
-                imagemPrincipal: "assets/vaso2.png"
-            },
-            "kit": {
-                nome: "Kit Básico de Cultivo",
-                categoria: "Acessórios",
-                preco: "R$ 58,00",
-                resumo: "Conjunto com itens úteis para rotina de manutenção e cuidado diário das plantas.",
-                descricao: "Tudo o que precisa para iniciar os cuidados com a sua nova planta. Este kit contém ferramentas básicas, substrato extra e orientações de montagem.",
-                cuidados: [
-                    "Limpar as ferramentas após cada utilização para evitar contaminação.",
-                    "Guardar em local seco e fresco."
-                ],
-                imagemPrincipal: "assets/kit.png"
-            },
-            "rosa": {
-                nome: "Orquídea Oncidium Rosa",
-                categoria: "Orquídeas",
-                preco: "R$ 67,90",
-                resumo: "Perfil delicado e floral para quem busca leveza e presença visual no ambiente.",
-                descricao: "A Oncidium oferece cachos abundantes de flores pequenas e muito vibrantes. Uma adição alegre e resistente a qualquer espaço.",
-                cuidados: [
-                    "Necessita de bastante luz difusa.",
-                    "Gosta de umidade ambiente alta.",
-                    "Deixar o substrato secar ligeiramente entre as regas."
-                ],
-                imagemPrincipal: "assets/rosa.png"
-            },
-            "mini": {
-                nome: "Mini Orquídea para Presente",
-                categoria: "Orquídeas",
-                preco: "R$ 49,90",
-                resumo: "Formato compacto com apresentação delicada, ideal para lembranças especiais.",
-                descricao: "Um arranjo super delicado e compacto, perfeito para decorar pequenos espaços ou presentear alguém especial com um toque de natureza.",
-                cuidados: [
-                    "Manter em local bem iluminado.",
-                    "Regar com cuidado para não encharcar o pequeno vaso.",
-                    "Evitar correntes de ar muito fortes."
-                ],
-                imagemPrincipal: "assets/verdebranca.png"
-            },
-            "substrato": {
-                nome: "Substrato Especial para Orquídeas",
-                categoria: "Acessórios",
-                preco: "R$ 18,50",
-                resumo: "Mistura pensada para favorecer drenagem, aeração e adaptação no replantio.",
-                descricao: "Substrato premium elaborado com casca de pinus, carvão e esfagno. Proporciona o ambiente ideal para o desenvolvimento saudável das raízes.",
-                cuidados: [
-                    "Armazenar em local seco e arejado.",
-                    "Umedecer levemente antes do plantio.",
-                    "Substituir a cada a cada ano ou quando estiver degradado."
-                ],
-                imagemPrincipal: "assets/paraorquidea.png"
-            },
-            "amarelo": {
-                nome: "Orquídea Amarela Premium",
-                categoria: "Orquídeas",
-                preco: "R$ 94,00",
-                resumo: "Variedade marcante com flores luminosas para compor ambientes com destaque.",
-                descricao: "A Orquídea Amarela Premium traz alegria e vivacidade para qualquer ambiente. Suas flores grandes e de cor intensa são um verdadeiro espetáculo da natureza.",
-                cuidados: [
-                    "Garante boa iluminação indireta.",
-                    "Rega moderada a cada 7-10 dias.",
-                    "Adubar regularmente durante a fase de crescimento."
-                ],
-                imagemPrincipal: "assets/amarelo.png"
-            },
-            "vaso_ceramico": {
-                nome: "Vaso Cerâmico Texturizado",
-                categoria: "Vasos",
-                preco: "R$ 42,00",
-                resumo: "Peça com aparência refinada para complementar projetos florais com suavidade.",
-                descricao: "Vaso de cerâmica com textura exclusiva que traz um toque rústico e sofisticado. Acompanha furo de drenagem essencial para orquídeas.",
-                cuidados: [
-                    "Lavar com água e sabão neutro se necessário.",
-                    "Evitar quedas e impactos mecânicos.",
-                    "Ideal para uso em áreas internas e externas cobertas."
-                ],
-                imagemPrincipal: "assets/vaso.png"
-            },
-            "borrifador": {
-                nome: "Borrifador de Névoa Fina",
-                categoria: "Acessórios",
-                preco: "R$ 27,90",
-                resumo: "Acessório prático para manutenção delicada da umidade em plantas ornamentais.",
-                descricao: "Borrifador com gatilho ergonômico que produz uma névoa contínua e ultrafina, perfeita para aumentar a umidade ao redor das orquídeas sem molhar excessivamente as folhas.",
-                cuidados: [
-                    "Utilizar preferencialmente com água filtrada ou descansada.",
-                    "Esvaziar após o uso para evitar acúmulo de resíduos.",
-                    "Não utilizar com produtos químicos corrosivos."
-                ],
-                imagemPrincipal: "assets/borrifador.png"
-            },
-            "adubo_granulado": {
-                nome: "Adubo Granulado de Manutenção",
-                categoria: "Adubos",
-                preco: "R$ 31,90",
-                resumo: "Indicado para rotinas periódicas de cuidado com foco em nutrição equilibrada.",
-                descricao: "Fertilizante de liberação lenta que fornece nutrientes de forma contínua por até 3 meses. Ideal para manter suas orquídeas sempre bem nutridas sem risco de excesso.",
-                cuidados: [
-                    "Aplicar na borda do vaso, longe do rizoma.",
-                    "Renovar a aplicação a cada 3 meses.",
-                    "Regar normalmente após a aplicação para iniciar a liberação."
-                ],
-                imagemPrincipal: "assets/adubogranulado.png"
-            },
-            "premium": {
-                nome: "Orquídea Premium Ornamental",
-                categoria: "Orquídeas",
-                preco: "R$ 49,90",
-                resumo: "Versão compacta e charmosa para lembranças especiais e decoração ilustre.",
-                descricao: "Uma das joias da coleção Yojo: orquídea ornamental com floração densa e estrutura robusta. Traz elegância a qualquer ambiente interno, seja sala, recepção ou escritório.",
-                cuidados: [
-                    "Manter em local iluminado sem exposição direta ao sol da tarde.",
-                    "Regar com moderação a cada 7 a 10 dias.",
-                    "Evitar acúmulo de água no prato do vaso."
-                ],
-                imagemPrincipal: "assets/Premium.png"
-            },
-            "interna": {
-                nome: "Orquídea Branca para Ambientes Internos",
-                categoria: "Orquídeas",
-                preco: "R$ 82,00",
-                resumo: "Escolha versátil para salas, recepções e espaços com proposta leve e refinada.",
-                descricao: "Adaptada especialmente para ambientes internos com pouca luminosidade natural. Seu aspecto verde e branco transmite frescor e elegância, sendo ideal para decoração de salas e escritórios modernos.",
-                cuidados: [
-                    "Prefere luz indireta e difusa — longe de janelas com sol direto.",
-                    "Regar uma vez por semana, com atenção ao substrato.",
-                    "Pulverizar as folhas com água filtrada nas manhãs mais secas."
-                ],
-                imagemPrincipal: "assets/verdebranca.png"
-            },
-            "azul": {
-                nome: "Orquídea Azul Especial para Colecionadores",
-                categoria: "Orquídeas",
-                preco: "R$ 118,00",
-                resumo: "Modelo exclusivo pensado para destacar valor ornamental e raridade da categoria.",
-                descricao: "A Orquídea Azul é uma das variedades mais raras e procuradas por colecionadores. Suas flores com tonalidade azulada única a tornam peça de destaque em qualquer coleção ou ambiente sofisticado.",
-                cuidados: [
-                    "Requer cuidado especial com umidade e temperatura ambiente.",
-                    "Regar com água de chuva ou filtrada, sem flúor.",
-                    "Proteger de correntes de ar e variações bruscas de temperatura."
-                ],
-                imagemPrincipal: "assets/Azul.png"
-            },
-            "olhodeboneca": {
-                nome: "Orquídea Olho de Boneca",
-                categoria: "Orquídeas",
-                preco: "R$ 79,90",
-                resumo: "Sugestão para quem quer cor suave, longa duração visual e cuidado prático no dia a dia.",
-                descricao: "A Orquídea Olho de Boneca encanta pelo padrão único das suas pétalas, que lembra olhos delicados e expressivos. Uma escolha sofisticada para quem aprecia flores com personalidade marcante.",
-                cuidados: [
-                    "Iluminação indireta de boa intensidade.",
-                    "Rega leve a cada 5 a 7 dias, verificando o substrato antes.",
-                    "Adubar levemente a cada duas semanas durante o crescimento."
-                ],
-                imagemPrincipal: "assets/OlhodeBoneca.png"
-            }
-        };
-
+        const API_BASE = window.location.port === '3000' ? '/api' : 'http://localhost:3000/api';
         const urlParams = new URLSearchParams(window.location.search);
         let produtoId = urlParams.get('id');
 
-        // Se não houver ID na URL (acesso direto à página), define "branca" como padrão
-        if (!produtoId) {
-            produtoId = 'branca';
+        if (!produtoId) produtoId = '1';
+
+        let produtoAtual = null;
+
+        function fp(valor) {
+            return 'R$ ' + Number(valor || 0).toFixed(2).replace('.', ',');
         }
 
-        // Mapeamento de IDs de string para IDs numéricos compatíveis com o carrinho
-        const idMapping = {
-            "branca": 1,
-            "roxa": 2,
-            "rosa": 3,
-            "amarelo": 4,
-            "adubo": 5,
-            "vaso": 6,
-            "kit": 7,
-            "mini": 8,
-            "substrato": 9,
-            "vaso_ceramico": 10,
-            "borrifador": 11,
-            "adubo_granulado": 12,
-            "premium": 13,
-            "interna": 14,
-            "azul": 15,
-            "olhodeboneca": 16
-        };
+        function categoriaNome(produto) {
+            return produto.categoria?.nome || produto.categoria || 'Sem categoria';
+        }
 
-        // 3. Função para carregar os dados
-        function carregarDadosDoProduto() {
-            if (produtoId && produtos[produtoId]) {
-                const produto = produtos[produtoId];
+        function imagemProduto(produto) {
+            return produto.imagemUrl || produto.imagem || 'https://placehold.co/600x500/2f4f3e/ffffff?text=Produto';
+        }
 
-                // Atualizar o Título da Aba do Navegador
-                document.title = produto.nome + " | Orquidário Yojo";
+        function textoCuidados(produto) {
+            const cat = categoriaNome(produto);
+            if (cat === 'Adubos') {
+                return [
+                    'Seguir as orientações de uso da embalagem.',
+                    'Aplicar longe de sol forte ou calor intenso.',
+                    'Manter fora do alcance de crianças e animais.'
+                ];
+            }
+            if (cat === 'Vasos') {
+                return [
+                    'Limpar com pano úmido e sabão neutro quando necessário.',
+                    'Evitar quedas e impactos.',
+                    'Garantir boa drenagem quando usado para plantio.'
+                ];
+            }
+            if (cat === 'Acessórios') {
+                return [
+                    'Guardar em local seco e arejado.',
+                    'Higienizar após o uso.',
+                    'Usar conforme a finalidade do produto.'
+                ];
+            }
+            return [
+                'Manter em local iluminado, sem sol direto intenso.',
+                'Regar de forma moderada, evitando encharcamento.',
+                'Garantir boa ventilação e ambiente protegido.'
+            ];
+        }
 
-                // Atualizar Breadcrumbs
-                document.getElementById('breadcrumb-categoria').textContent = produto.categoria;
-                document.getElementById('breadcrumb-produto').textContent = produto.nome;
+        function carregarNoCarrinho(produto, quantidade) {
+            const itemId = Number(produto.id);
+            const priceNumber = Number(produto.preco || 0);
+            let carrinhoItens = [];
 
-                // Atualizar Informações Básicas
-                document.getElementById('etiqueta-categoria').textContent = `Categoria: ${produto.categoria}`;
-                document.getElementById('titulo-produto').textContent = produto.nome;
-                document.getElementById('preco-produto').textContent = produto.preco;
-                document.getElementById('resumo-produto').textContent = produto.resumo;
-                document.getElementById('descricao-produto').textContent = produto.descricao;
+            try {
+                const salvo = JSON.parse(localStorage.getItem('carrinhoItens'));
+                carrinhoItens = Array.isArray(salvo) ? salvo : [];
+            } catch {
+                carrinhoItens = [];
+            }
 
-                // Atualizar Lista de Cuidados
-                const listaCuidados = document.getElementById('lista-cuidados');
-                listaCuidados.innerHTML = ''; // Limpa a lista existente
-                produto.cuidados.forEach(cuidado => {
-                    const li = document.createElement('li');
-                    li.textContent = cuidado;
-                    listaCuidados.appendChild(li);
-                });
-
-                // Atualizar Imagem Principal e Miniaturas
-                document.getElementById('imagem-principal').src = produto.imagemPrincipal;
-                const miniaturas = document.querySelectorAll('.thumbnail-card img');
-                miniaturas.forEach(img => {
-                    img.src = produto.imagemPrincipal;
-                });
-
-                // Configurar o Seletor de Quantidade
-                const qtySelector = document.querySelector('.quantity-selector');
-                if (qtySelector) {
-                    const decBtn = qtySelector.querySelector('span:first-child');
-                    const incBtn = qtySelector.querySelector('span:last-child');
-                    const qtyDisplay = qtySelector.querySelector('strong');
-
-                    decBtn.style.cursor = 'pointer';
-                    incBtn.style.cursor = 'pointer';
-
-                    decBtn.addEventListener('click', () => {
-                        let currentQty = parseInt(qtyDisplay.textContent) || 1;
-                        if (currentQty > 1) {
-                            qtyDisplay.textContent = currentQty - 1;
-                        }
-                    });
-
-                    incBtn.addEventListener('click', () => {
-                        let currentQty = parseInt(qtyDisplay.textContent) || 1;
-                        qtyDisplay.textContent = currentQty + 1;
-                    });
-                }
-
-                // Configurar o botão "Adicionar ao carrinho"
-                const addBtn = document.querySelector('.action-buttons .button-primary');
-                if (addBtn) {
-                    addBtn.addEventListener('click', (e) => {
-                        e.preventDefault();
-
-                        const qtyDisplay = document.querySelector('.quantity-selector strong');
-                        const quantity = parseInt(qtyDisplay ? qtyDisplay.textContent : 1) || 1;
-
-                        const numericId = idMapping[produtoId] || 999;
-                        const priceNumber = parseFloat(produto.preco.replace("R$", "").replace(",", ".").trim()) || 0;
-
-                        // Ler carrinho existente do localStorage
-                        let carrinhoItens = JSON.parse(localStorage.getItem('carrinhoItens'));
-
-                        // Se não houver carrinho ou se for a inicialização automática vazia, começamos uma nova lista
-                        if (!carrinhoItens) {
-                            carrinhoItens = [];
-                        }
-
-                        // Procurar se o item já existe no carrinho
-                        const existingItem = carrinhoItens.find(item => item.id === numericId);
-                        if (existingItem) {
-                            existingItem.quantidade += quantity;
-                        } else {
-                            // Extrair o nome relativo da imagem
-                            const imageFilename = produto.imagemPrincipal.replace("assets/", "");
-
-                            carrinhoItens.push({
-                                id: numericId,
-                                nome: produto.nome,
-                                tipo: produto.categoria,
-                                precoUnitario: priceNumber,
-                                quantidade: quantity,
-                                imagem: imageFilename
-                            });
-                        }
-
-                        // Salvar no localStorage e redirecionar
-                        localStorage.setItem('carrinhoItens', JSON.stringify(carrinhoItens));
-                        window.location.href = 'carrinho.html';
-                    });
-                }
-
+            const existente = carrinhoItens.find(item => Number(item.id) === itemId);
+            if (existente) {
+                existente.quantidade += quantidade;
+                existente.imagem = imagemProduto(produto);
             } else {
-                // TRATAMENTO DE ERRO: Caso o ID exista no URL mas não no Banco de Dados
-                document.title = "Produto não encontrado | Orquidário Yojo";
-                document.getElementById('titulo-produto').textContent = "Produto não encontrado";
-                document.getElementById('resumo-produto').textContent = "Desculpe, o produto que tentou aceder não está disponível.";
-                document.getElementById('preco-produto').textContent = "-";
-                document.getElementById('breadcrumb-produto').textContent = "Erro";
-                document.getElementById('descricao-produto').textContent = "Verifique o endereço digitado ou volte à página anterior.";
-                document.getElementById('lista-cuidados').innerHTML = '<li>Por favor, volte ao catálogo e tente outro produto.</li>';
+                carrinhoItens.push({
+                    id: itemId,
+                    nome: produto.nome,
+                    tipo: categoriaNome(produto),
+                    precoUnitario: priceNumber,
+                    quantidade,
+                    imagem: imagemProduto(produto)
+                });
+            }
+
+            localStorage.setItem('carrinhoItens', JSON.stringify(carrinhoItens));
+            window.location.href = 'carrinho.html';
+        }
+
+        function configurarQuantidade() {
+            const qtySelector = document.querySelector('.quantity-selector');
+            if (!qtySelector) return;
+
+            const decBtn = qtySelector.querySelector('span:first-child');
+            const incBtn = qtySelector.querySelector('span:last-child');
+            const qtyDisplay = qtySelector.querySelector('strong');
+
+            decBtn.style.cursor = 'pointer';
+            incBtn.style.cursor = 'pointer';
+
+            decBtn.addEventListener('click', () => {
+                let currentQty = parseInt(qtyDisplay.textContent) || 1;
+                if (currentQty > 1) qtyDisplay.textContent = currentQty - 1;
+            });
+
+            incBtn.addEventListener('click', () => {
+                let currentQty = parseInt(qtyDisplay.textContent) || 1;
+                qtyDisplay.textContent = currentQty + 1;
+            });
+        }
+
+        function configurarBotaoCarrinho() {
+            const addBtn = document.querySelector('.action-buttons .button-primary');
+            if (!addBtn) return;
+
+            addBtn.addEventListener('click', e => {
+                e.preventDefault();
+                if (!produtoAtual) return;
+                const qtyDisplay = document.querySelector('.quantity-selector strong');
+                const quantity = parseInt(qtyDisplay ? qtyDisplay.textContent : 1) || 1;
+                carregarNoCarrinho(produtoAtual, quantity);
+            });
+        }
+
+        function renderizarProduto(produto) {
+            produtoAtual = produto;
+            const cat = categoriaNome(produto);
+            const imagem = imagemProduto(produto);
+
+            document.title = produto.nome + ' | Orquidário Yojo';
+            document.getElementById('breadcrumb-categoria').textContent = cat;
+            document.getElementById('breadcrumb-produto').textContent = produto.nome;
+            document.getElementById('etiqueta-categoria').textContent = `Categoria: ${cat}`;
+            document.getElementById('titulo-produto').textContent = produto.nome;
+            document.getElementById('preco-produto').textContent = fp(produto.preco);
+            document.getElementById('resumo-produto').textContent = produto.resumo || 'Produto cadastrado no catálogo do orquidário.';
+            document.getElementById('descricao-produto').textContent = produto.descricao || produto.resumo || 'Consulte o atendimento do orquidário para mais informações sobre este produto.';
+
+            const disponibilidade = document.querySelector('.availability');
+            if (disponibilidade) {
+                disponibilidade.textContent = Number(produto.estoque || 0) > 0 ? 'Disponível' : 'Indisponível';
+            }
+
+            const listaCuidados = document.getElementById('lista-cuidados');
+            listaCuidados.innerHTML = '';
+            textoCuidados(produto).forEach(cuidado => {
+                const li = document.createElement('li');
+                li.textContent = cuidado;
+                listaCuidados.appendChild(li);
+            });
+
+            const imgPrincipal = document.getElementById('imagem-principal');
+            imgPrincipal.src = imagem;
+            imgPrincipal.onerror = () => { imgPrincipal.src = 'https://placehold.co/600x500/2f4f3e/ffffff?text=Produto'; };
+            const miniaturas = document.querySelectorAll('.thumbnail-card img');
+            miniaturas.forEach(img => {
+                img.src = imagem;
+                img.onerror = () => { img.src = 'https://placehold.co/120x120/2f4f3e/ffffff?text=Produto'; };
+            });
+        }
+
+        function renderizarErro() {
+            document.title = 'Produto não encontrado | Orquidário Yojo';
+            document.getElementById('titulo-produto').textContent = 'Produto não encontrado';
+            document.getElementById('resumo-produto').textContent = 'Desculpe, o produto que tentou acessar não está disponível.';
+            document.getElementById('preco-produto').textContent = '-';
+            document.getElementById('breadcrumb-produto').textContent = 'Erro';
+            document.getElementById('descricao-produto').textContent = 'Verifique o endereço digitado ou volte à página anterior.';
+            document.getElementById('lista-cuidados').innerHTML = '<li>Por favor, volte ao catálogo e tente outro produto.</li>';
+        }
+
+        async function carregarDadosDoProduto() {
+            try {
+                const resposta = await fetch(`${API_BASE}/produtos/id/${encodeURIComponent(produtoId)}`, { cache: 'no-store' });
+                const data = await resposta.json().catch(() => ({}));
+                if (!resposta.ok || !data.produto) throw new Error(data.message || 'Produto não encontrado.');
+                renderizarProduto(data.produto);
+            } catch {
+                renderizarErro();
             }
         }
 
-        // Executar a função quando a página carregar
-        document.addEventListener('DOMContentLoaded', carregarDadosDoProduto);
+        document.addEventListener('DOMContentLoaded', () => {
+            configurarQuantidade();
+            configurarBotaoCarrinho();
+            carregarDadosDoProduto();
+        });
     </script>
 </body>
 

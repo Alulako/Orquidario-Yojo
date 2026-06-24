@@ -132,7 +132,7 @@ async function seedProdutos() {
     await sequelize.authenticate();
     console.log("Conexao com o banco estabelecida.");
 
-    await sequelize.sync();
+    await sequelize.sync({ alter: true });
     console.log("Tabelas sincronizadas.");
 
     const mapaCategorias = {};
@@ -164,6 +164,7 @@ async function seedProdutos() {
           slug,
           preco: dados.preco,
           estoque: dados.estoque,
+          status: dados.estoque > 0 ? "Ativo" : "Inativo",
           resumo: dados.resumo,
           descricao: dados.descricao,
           destaque: dados.destaque,

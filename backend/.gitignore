@@ -1,4 +1,16 @@
+# Dependencias
 node_modules/
+
+# Variaveis de ambiente e segredos
 .env
+.env.*
+!.env.example
+
+# Uploads locais gerados pelo multer
 uploads/
+
+# Logs e temporarios
+*.log
+npm-debug.log*
 .DS_Store
+Thumbs.db

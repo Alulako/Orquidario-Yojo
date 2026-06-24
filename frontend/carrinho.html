@@ -8,7 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon-yojo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/carrinho.css">
+  <link rel="stylesheet" href="css/visual-polish.css">
 </head>
 
 <body>
@@ -109,13 +111,21 @@
   </footer>
 
   <script>
-    let carrinhoItens = JSON.parse(localStorage.getItem('carrinhoItens')) || [
-      { id: 1, nome: 'Orquídea Phalaenopsis Branca', tipo: 'Orquídea', precoUnitario: 89.90, quantidade: 1, imagem: 'orquideas/phalaenopsis-branca.png' },
-      { id: 5, nome: 'Adubo Líquido para Floração', tipo: 'Adubo', precoUnitario: 24.90, quantidade: 2, imagem: 'adubos/adubo-liquido-floracao.png' }
-    ];
+    const API_BASE = window.location.port === '3000' ? '/api' : 'http://localhost:3000/api';
+
+    function lerCarrinho() {
+      try {
+        const salvo = JSON.parse(localStorage.getItem('carrinhoItens'));
+        return Array.isArray(salvo) ? salvo : [];
+      } catch {
+        return [];
+      }
+    }
+
+    let carrinhoItens = lerCarrinho();
     let frete = parseFloat(localStorage.getItem('frete')) || 0;
 
-    const fp = v => v.toFixed(2).replace('.', ',');
+    const fp = v => Number(v || 0).toFixed(2).replace('.', ',');
 
     const atualizarResumo = () => {
       const sub = carrinhoItens.reduce((a, i) => a + i.precoUnitario * i.quantidade, 0);
@@ -127,6 +137,41 @@
       if (ts) ts.textContent = `R$ ${fp(tot)}`;
     };
 
+    function normalizarCep(cep) {
+      return String(cep || '').replace(/\D/g, '').slice(0, 8);
+    }
+
+    function formatarCep(cep) {
+      const limpo = normalizarCep(cep);
+      return limpo.length > 5 ? `${limpo.slice(0, 5)}-${limpo.slice(5)}` : limpo;
+    }
+
+    function resolverImagem(imagem) {
+      if (!imagem) return 'https://placehold.co/300x300/2f4f3e/ffffff?text=Produto';
+      if (imagem.startsWith('data:') || imagem.startsWith('http')) return imagem;
+      if (imagem.startsWith('/uploads/')) return `http://localhost:3000${imagem}`;
+      if (imagem.startsWith('uploads/')) return `http://localhost:3000/${imagem}`;
+      if (imagem.startsWith('/assets/')) return imagem.slice(1);
+      if (imagem.startsWith('assets/')) return imagem;
+      return `assets/${imagem}`;
+    }
+
+    function setMensagemFrete(texto, erro = false) {
+      let msg = document.getElementById('frete-feedback');
+      const calc = document.querySelector('.frete-calculator');
+      if (!msg && calc) {
+        msg = document.createElement('small');
+        msg.id = 'frete-feedback';
+        msg.style.display = 'block';
+        msg.style.marginTop = '8px';
+        calc.appendChild(msg);
+      }
+      if (msg) {
+        msg.textContent = texto || '';
+        msg.style.color = erro ? '#9d2f2f' : 'inherit';
+      }
+    }
+
     const renderizar = () => {
       const c = document.querySelector('.cart-items');
       if (!c) return;
@@ -135,7 +180,7 @@
         const d = document.createElement('div');
         d.className = 'cart-item';
         d.dataset.id = item.id;
-        d.innerHTML = `<div class="item-image"><img src="/assets/${item.imagem}" alt="${item.nome}" onerror="this.src='https://placehold.co/300x300/2f4f3e/ffffff?text=Produto'"></div>
+        d.innerHTML = `<div class="item-image"><img src="${resolverImagem(item.imagem)}" alt="${item.nome}" onerror="this.src='https://placehold.co/300x300/2f4f3e/ffffff?text=Produto'"></div>
         <div class="item-info"><h3>${item.nome}</h3><p class="item-type">${item.tipo}</p><p class="item-price">R$ ${fp(item.precoUnitario)}</p></div>
         <div class="item-pricing"><div class="quantity-controls">
             <button class="qty-btn qty-minus" data-id="${item.id}">−</button>
@@ -166,20 +211,44 @@
       }
     });
 
+    document.getElementById('cep-input')?.addEventListener('input', e => {
+      e.target.value = formatarCep(e.target.value);
+    });
+
     document.getElementById('btn-calcular-frete')?.addEventListener('click', async () => {
-      const cep = document.getElementById('cep-input')?.value?.trim();
-      if (!cep) return;
+      const input = document.getElementById('cep-input');
+      const cep = normalizarCep(input?.value);
+
+      if (cep.length !== 8) {
+        setMensagemFrete('Informe um CEP válido com 8 dígitos.', true);
+        return;
+      }
+
       try {
-        const r = await fetch('/api/carrinho/frete', {
-          method: 'POST', headers: { 'Content-Type': 'application/json' },
+        setMensagemFrete('Calculando frete...');
+        const r = await fetch(`${API_BASE}/carrinho/frete`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ cep })
         });
-        if (!r.ok) return;
-        const d = await r.json();
+        const d = await r.json().catch(() => ({}));
+        if (!r.ok) {
+          setMensagemFrete(d.error || 'Não foi possível calcular o frete para este CEP.', true);
+          return;
+        }
         frete = parseFloat(d.frete) || 0;
         localStorage.setItem('frete', JSON.stringify(frete));
+        localStorage.setItem('cepEntrega', formatarCep(cep));
         atualizarResumo();
-      } catch { }
+        setMensagemFrete(`Frete calculado: ${d.freteFormatado || `R$ ${fp(frete)}`}`);
+      } catch {
+        // Fallback simples para apresentação caso o backend não esteja acessível.
+        frete = cep.startsWith('01') || cep.startsWith('02') ? 15 : cep.startsWith('1') ? 20 : 30;
+        localStorage.setItem('frete', JSON.stringify(frete));
+        localStorage.setItem('cepEntrega', formatarCep(cep));
+        atualizarResumo();
+        setMensagemFrete(`Frete calculado localmente: R$ ${fp(frete)}`);
+      }
     });
 
     document.querySelector('.button-primary')?.addEventListener('click', e => {

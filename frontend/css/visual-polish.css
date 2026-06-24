@@ -1,0 +1,476 @@
+/* Polimento visual final: apenas CSS, sem alterar backend, rotas ou regras de negócio. */
+:root {
+    --color-primary: #2f4f3e;
+    --color-secondary: #66875b;
+    --color-accent: #b99cc9;
+    --color-surface: #f7f2ea;
+    --color-white: #ffffff;
+    --color-text: #3f473f;
+    --color-muted: #e9e2d7;
+    --shadow-soft: 0 20px 42px rgba(47, 79, 62, 0.10);
+    --shadow-card: 0 10px 24px rgba(47, 79, 62, 0.075);
+    --shadow-hover: 0 16px 34px rgba(47, 79, 62, 0.12);
+}
+
+html {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background: #f8f4ed;
+    color: var(--color-text);
+}
+
+body,
+button,
+input,
+select,
+textarea {
+    font-feature-settings: "kern" 1;
+}
+
+.site-header,
+.admin-header {
+    background: rgba(248, 244, 237, 0.94);
+    border-bottom: 1px solid rgba(47, 79, 62, 0.10);
+    backdrop-filter: blur(12px);
+}
+
+.header-wrapper,
+.admin-header-wrapper {
+    min-height: 78px;
+}
+
+.logo-img {
+    height: 56px;
+    margin-right: 6px;
+}
+
+.brand,
+.admin-brand {
+    gap: 10px;
+}
+
+.brand-text strong {
+    letter-spacing: -0.01em;
+}
+
+.brand-text small,
+.footer-brand small {
+    color: rgba(63, 71, 63, 0.72);
+    line-height: 1.35;
+}
+
+.main-nav ul,
+.admin-nav {
+    gap: 8px;
+}
+
+.main-nav a,
+.admin-nav a,
+.filter-chip,
+.button,
+.action-button,
+button {
+    white-space: nowrap;
+}
+
+.main-nav a,
+.admin-nav a {
+    border: 1px solid transparent;
+    line-height: 1.15;
+    padding: 10px 15px;
+}
+
+.main-nav a:hover,
+.main-nav a:focus-visible,
+.main-nav .is-active,
+.admin-nav a:hover,
+.admin-nav a:focus-visible,
+.admin-nav .is-active {
+    background-color: rgba(107, 142, 94, 0.10);
+    border-color: rgba(107, 142, 94, 0.18);
+    color: var(--color-primary);
+}
+
+.section-spacing {
+    padding-top: 76px;
+    padding-bottom: 76px;
+}
+
+.section-tag,
+.category-label,
+.related-type,
+.status-badge,
+.preview-badge,
+.visual-tag,
+.summary-label,
+.filters-label,
+.filter-label,
+.page-eyebrow {
+    letter-spacing: 0.045em;
+    text-transform: none;
+}
+
+.section-tag,
+.page-eyebrow {
+    color: #6f8c62;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--color-primary);
+    letter-spacing: -0.025em;
+}
+
+p {
+    line-height: 1.72;
+}
+
+.hero-content h1,
+.catalog-hero h1,
+.page-header h1,
+.admin-topbar h1,
+.login-card h1,
+.cart-header h1,
+.checkout-header h1,
+.contact-hero h1 {
+    letter-spacing: -0.045em;
+    line-height: 1.04;
+}
+
+.hero-text,
+.catalog-subtitle,
+.topbar-text,
+.page-text,
+.login-text,
+.product-summary,
+.contact-hero p {
+    color: rgba(63, 71, 63, 0.78);
+    max-width: 62ch;
+}
+
+.button,
+.action-button {
+    align-items: center;
+    line-height: 1.1;
+    min-height: 44px;
+}
+
+.button:hover,
+.button:focus-visible,
+.action-button:hover,
+.action-button:focus-visible {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-1px);
+}
+
+.button-secondary,
+.button-outline {
+    background: #fffaf2;
+    border: 1px solid rgba(47, 79, 62, 0.10);
+    color: var(--color-primary);
+}
+
+.button-secondary:hover,
+.button-secondary:focus-visible,
+.button-outline:hover,
+.button-outline:focus-visible {
+    background: #f1eadf;
+}
+
+.hero-visual::before,
+.catalog-hero-card::after,
+.login-visual::before,
+.contact-hero-card::after {
+    display: none;
+}
+
+.catalog-hero-card,
+.about-card,
+.about-highlight,
+.info-card,
+.benefit-card,
+.product-card,
+.controls-panel,
+.toolbar-card,
+.table-card,
+.summary-card,
+.form-card,
+.upload-card,
+.preview-card,
+.product-info-card,
+.items-card,
+.contact-card,
+.checkout-card,
+.login-card,
+.visual-card,
+.main-image-card,
+.related-card {
+    border-color: rgba(47, 79, 62, 0.10);
+    box-shadow: var(--shadow-card);
+}
+
+.catalog-hero-card,
+.about-highlight,
+.login-shell,
+.contact-hero-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.90), rgba(247,242,234,0.96));
+}
+
+.product-card,
+.related-card,
+.summary-card,
+.info-card,
+.benefit-card,
+.contact-card {
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.product-card:hover,
+.related-card:hover,
+.info-card:hover,
+.benefit-card:hover,
+.contact-card:hover {
+    border-color: rgba(107, 142, 94, 0.22);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+.product-card img,
+.related-card img,
+.admin-table img,
+.preview-frame img,
+.main-image-card img,
+.item-image img {
+    background: #faf6ef;
+    object-fit: contain;
+}
+
+.product-card img {
+    height: 250px;
+    padding: 14px;
+    width: 100%;
+}
+
+.related-card img {
+    height: 210px;
+    padding: 12px;
+    width: 100%;
+}
+
+.product-content,
+.related-content {
+    padding: 22px;
+}
+
+.product-content h2,
+.product-content h3,
+.related-content h3 {
+    line-height: 1.22;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    color: rgba(63, 71, 63, 0.74);
+    min-height: 3.4em;
+}
+
+.category-label,
+.related-type,
+.preview-badge {
+    background: rgba(107, 142, 94, 0.11);
+    color: var(--color-primary);
+}
+
+.availability,
+.status-badge {
+    border: 1px solid rgba(47, 79, 62, 0.10);
+    font-weight: 600;
+}
+
+.status-active,
+.availability.in-stock {
+    background: rgba(107, 142, 94, 0.12);
+    color: #456c3c;
+}
+
+.status-low {
+    background: rgba(181, 128, 59, 0.13);
+    color: #7b562c;
+}
+
+.status-inactive {
+    background: rgba(110, 102, 95, 0.12);
+    color: #665f59;
+}
+
+.controls-panel,
+.toolbar-card {
+    align-items: center;
+    gap: 18px;
+}
+
+.search-box input,
+.field-group input,
+.field-group select,
+.field-group textarea,
+.sort-box select,
+#cep-input {
+    border-color: rgba(47, 79, 62, 0.14) !important;
+    box-shadow: none;
+}
+
+.search-box input:focus,
+.field-group input:focus,
+.field-group select:focus,
+.field-group textarea:focus,
+.sort-box select:focus,
+#cep-input:focus {
+    border-color: rgba(107, 142, 94, 0.46) !important;
+    box-shadow: 0 0 0 4px rgba(107, 142, 94, 0.10);
+    outline: none;
+}
+
+.filter-chip {
+    border: 1px solid rgba(47, 79, 62, 0.10);
+    line-height: 1.1;
+}
+
+.filter-chip.is-selected,
+.filter-chip:hover,
+.filter-chip:focus-visible {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+}
+
+.admin-table th,
+.admin-table td {
+    vertical-align: middle;
+}
+
+.admin-table img {
+    border: 1px solid rgba(47, 79, 62, 0.08);
+    border-radius: 14px;
+    height: 62px;
+    padding: 5px;
+    width: 62px;
+}
+
+.action-group {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.action-button {
+    border: 1px solid rgba(47, 79, 62, 0.10);
+    min-height: 34px;
+    padding: 8px 12px;
+}
+
+.action-delete {
+    background: #fff4ef;
+    color: #8a3d2d;
+}
+
+.action-edit {
+    background: #f4efe6;
+}
+
+.action-view {
+    background: rgba(107, 142, 94, 0.10);
+}
+
+.upload-dropzone {
+    border-color: rgba(107, 142, 94, 0.28);
+    background: #fffaf2;
+}
+
+.upload-dropzone:hover,
+.upload-dropzone:focus-within {
+    border-color: rgba(47, 79, 62, 0.45);
+    background: #f5efe5;
+}
+
+.site-footer {
+    padding-top: 48px;
+    padding-bottom: 48px;
+}
+
+.site-footer p,
+.site-footer li,
+.site-footer a {
+    line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+    .header-wrapper,
+    .admin-header-wrapper {
+        min-height: auto;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .product-card img,
+    .related-card img {
+        height: 220px;
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .section-spacing {
+        padding-top: 56px;
+        padding-bottom: 56px;
+    }
+
+    .main-nav a,
+    .button {
+        width: auto;
+    }
+
+    .hero-actions .button,
+    .action-buttons .button,
+    .actions-row .button {
+        width: 100%;
+    }
+
+    .catalog-hero-card,
+    .form-card,
+    .upload-card,
+    .preview-card,
+    .product-info-card,
+    .items-card,
+    .summary-card,
+    .login-card {
+        border-radius: 22px;
+        padding: 24px;
+    }
+
+    .product-card img,
+    .related-card img {
+        height: 200px;
+    }
+
+    .action-group {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .action-button {
+        text-align: center;
+        width: 100%;
+    }
+}
